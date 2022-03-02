@@ -1,0 +1,58 @@
+{
+  "colegio": [
+    {
+      "id": 1,
+      "nombre": "json-server",
+      "direccion": "typicode",
+      "fechaInscripcion": "12/02/2020",
+      "nombreRepresentate": "Juan Perez"
+    } 
+    
+  ],
+  "profesor": [
+    {
+      "id": 1,
+      "nombre": "Pedro Carbo",
+      "direccionDomicilaria": "Ibarra",
+      "fechaNacimiento": "12/02/1990",
+      "cedula": 1004295729,
+      "celular": "0998831832",
+      "correo": "pedro@colegio.com"
+    }
+  ],
+  "estudiante": [
+    {
+      "id": 1,
+      "nombre": "Juan Perez",
+      "fechaNacimiento": "12/02/1990",
+      "direccionDomiciliaria": "Atuntaqui",
+      "cedula": 1004295729,
+      "celularRepresentante": "0998831832",
+      "nombreRepresentante": "Pedro Carbo"
+    }
+  ],
+
+  "asignatura": [
+    {
+      "idColegio": 1,
+      "nombre": "Matematicas"
+    }
+  ],
+
+  "curso": [
+    {
+      "idAsignatura": 1,
+      "idProfesor": 1,
+      "capacidadEstudiantes": 30,
+      "fechaInicio": "12/02/2020",
+      "fechaFin": "12/03/2020"
+    }
+  ],
+
+  "cursoEstudiantes": [
+    {
+      "idCurso": 1,
+      "idEstudiante": 1
+    }
+  ]
+}
