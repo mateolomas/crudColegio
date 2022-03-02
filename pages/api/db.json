@@ -2,8 +2,8 @@
   "colegio": [
     {
       "id": 1,
-      "nombre": "Colegio Initgrammers",
-      "direccion": "Ibarra",
+      "nombre": "json-server",
+      "direccion": "typicode",
       "fechaInscripcion": "12/02/2020",
       "nombreRepresentate": "Juan Perez"
     }
@@ -37,6 +37,24 @@
       "cedula": 15214295729,
       "celularRepresentante": "0998881124",
       "nombreRepresentante": "Mariana Carbo"
+    },
+    {
+      "id": 3,
+      "nombre": "Andres Puli",
+      "fechaNacimiento": "11/03/1893",
+      "direccionDomiciliaria": "Tulcan",
+      "cedula": 1521427879,
+      "celularRepresentante": "0998881129",
+      "nombreRepresentante": "Mariana Altares"
+    },
+    {
+      "id": 4,
+      "nombre": "Jona Techec",
+      "fechaNacimiento": "12/04/1993",
+      "direccionDomiciliaria": "Ambuqui",
+      "cedula": 1529587879,
+      "celularRepresentante": "0999991129",
+      "nombreRepresentante": "Aracely Arcos"
     }
   ],
   "asignatura": [

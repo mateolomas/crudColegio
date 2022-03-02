@@ -1,0 +1,32 @@
+
+
+
+.tabla {
+    width: 100%;
+    
+    
+}
+
+
+.encabezado {
+    background-color: #F3F6F9;
+    
+    
+}
+
+
+.valuestr {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 100;
+    
+
+}
+
+.valuestr td {
+    
+    border:0px;
+    padding: 10px;
+    
+    
+}

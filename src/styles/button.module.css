@@ -1,0 +1,23 @@
+.button {
+    padding: 10px;
+    gap: 8px;
+    display: flex;
+}
+
+.button button:nth-child(1) {
+    background-color: rgb(68,46,255);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.button button:nth-child(2) {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}

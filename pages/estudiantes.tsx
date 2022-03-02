@@ -3,6 +3,8 @@ import React from 'react'
 import Formulario from '../src/components/Form'
 import Layout from '../src/components/Layout'
 import useFetchData from '../src/hooks/useFetchData'
+import styles from '../src/styles/table.module.css'
+import buttonstyle from '../src/styles/button.module.css'
 
 
 const estudiantes = () => {
@@ -13,9 +15,9 @@ const estudiantes = () => {
   return (
     <>
     <Layout>
-    <table >
-      <thead>
-        <tr>
+    <table className={styles.tabla}>
+      <thead >
+        <tr className={styles.encabezado} >
           <th>Nombre</th>
           <th>Fecha de Nacimiento</th>
           <th>Direccion Domiciliaria</th>
@@ -26,7 +28,7 @@ const estudiantes = () => {
       </thead>
       <tbody>
         {data.map(estudiante => (
-          <tr key={estudiante.id}>
+          <tr key={estudiante.id} className={styles.valuestr}>
             <td>{estudiante.nombre}</td>
             <td>{estudiante.fechaNacimiento}</td>
             <td>{estudiante.direccionDomiciliaria}</td>
@@ -38,11 +40,10 @@ const estudiantes = () => {
     </tbody>
 
     </table>
-
-    <Link href="/">
-      <a>Home Page</a>
-    </Link>
-
+    <div className={buttonstyle.button}> 
+          <button>Agregar</button>
+          <button>Eliminar</button>
+    </div>
 
 
           <Formulario />

@@ -20,6 +20,10 @@ function Header() {
       <Link href='/profesores'>
         <a>Profesores</a>
       </Link>
+      <Link href="/">
+      <a>Home Page</a>
+        </Link>
+
       </nav>
       
     </div>
