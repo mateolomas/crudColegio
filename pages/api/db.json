@@ -2,12 +2,11 @@
   "colegio": [
     {
       "id": 1,
-      "nombre": "json-server",
-      "direccion": "typicode",
+      "nombre": "Colegio Initgrammers",
+      "direccion": "Ibarra",
       "fechaInscripcion": "12/02/2020",
       "nombreRepresentate": "Juan Perez"
-    } 
-    
+    }
   ],
   "profesor": [
     {
@@ -29,16 +28,23 @@
       "cedula": 1004295729,
       "celularRepresentante": "0998831832",
       "nombreRepresentante": "Pedro Carbo"
+    },
+    {
+      "id": 2,
+      "nombre": "Polo Perez",
+      "fechaNacimiento": "11/02/1993",
+      "direccionDomiciliaria": "Quito",
+      "cedula": 15214295729,
+      "celularRepresentante": "0998881124",
+      "nombreRepresentante": "Mariana Carbo"
     }
   ],
-
   "asignatura": [
     {
       "idColegio": 1,
       "nombre": "Matematicas"
     }
   ],
-
   "curso": [
     {
       "idAsignatura": 1,
@@ -48,7 +54,6 @@
       "fechaFin": "12/03/2020"
     }
   ],
-
   "cursoEstudiantes": [
     {
       "idCurso": 1,

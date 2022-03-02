@@ -1,0 +1,33 @@
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    border-bottom: 3px solid black;
+    margin-top: 0;
+    
+}
+
+.navbar {
+    
+    display: flex;
+    gap: 1rem;
+    padding: 15px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
