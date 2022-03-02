@@ -5,11 +5,14 @@ import Layout from '../src/components/Layout'
 import useFetchData from '../src/hooks/useFetchData'
 import styles from '../src/styles/table.module.css'
 import buttonstyle from '../src/styles/button.module.css'
+import { useState } from 'react'
+import Modal from '../src/components/Modal'
 
 
 const estudiantes = () => {
 
-  const data = useFetchData("estudiante")
+  const data = useFetchData("estudiante");
+  const [modal, setModal] = useState(false);
   
 
   return (
@@ -41,18 +44,12 @@ const estudiantes = () => {
 
     </table>
     <div className={buttonstyle.button}> 
-          <button>Agregar</button>
-          <button>Eliminar</button>
+     <button onClick={()=>setModal(!modal)}>Agregar</button>
+          
     </div>
 
-
-          <Formulario />
-
-
-
-
-
-
+    {modal && <Modal />}
+        
 
 
 

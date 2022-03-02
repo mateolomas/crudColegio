@@ -30,3 +30,12 @@
     
     
 }
+
+.close_modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+
