@@ -1,13 +1,12 @@
 import * as yup from 'yup';
 
-const estudianteValidation = yup.object().shape({
+export const estudianteValidation = yup.object().shape({
     nombre: yup.string().required('El nombre es requerido'),
-    correo: yup.string().email('El correo no es válido'),
-    fnacimiento: yup.string().required('La fecha de nacimiento es requerida'),
-    direccion: yup.string().required('La direccion es requerida'),
+    fechaNacimiento: yup.string().required('La fecha de nacimiento es requerida'),
+    direccionDomiciliaria: yup.string().required('La direccion es requerida'),
     cedula: yup.string().required('La cedula es requerida'),
-    nrepresentante: yup.string().required('El nombre del representante es requerido'),
-    crepresentante: yup.string().required('La cedula del representante es requerido'),
+    nombreRepresentante: yup.string().required('El nombre del representante es requerido'),
+    celularRepresentante: yup.string().required('La cedula del representante es requerido'),
 });
 
 

@@ -1,37 +1,39 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useState } from "react";
+import { profesorValidation } from "../Validations/profesorValidation";
+import usePostData from '../hooks/usePostData';
 
-const FormularioProfesores = () => {
-    const [formulario, setFormulario] = useState(false);
+interface FormProps {
+    handleModalClose: () => void
+}
+
+
+const FormularioProfesores = ({ handleModalClose }: FormProps) => {
+
 
     return (
         <>
             <Formik
                 onSubmit={(values, { resetForm }) => {
                     resetForm();
-                    setFormulario(true);
                     console.log(values);
-                    setTimeout(() => setFormulario(false), 2000);
-                }}
-                validate={(values) => {
-                    let errores: any = {};
-                    if (!values.nombre) {
-                        errores.nombre = "El nombre es requerido";
-                    } else if (/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.nombre) === false) {
-                        errores.nombre = "El nombre no es válido";
-                    }
+                    alert(values);
+                    handleModalClose();
+                    usePostData(values, "profesor");
 
-                    return errores;
                 }}
+
+                validationSchema={profesorValidation}
+
                 initialValues={{
                     nombre: "",
                     correo: "",
-                    fnacimiento: "",
-                    direccion: "",
+                    fechaNacimiento: "",
+                    direccionDomicilaria: "",
                     cedula: "",
-                    nrepresentante: "",
-                    crepresentante: "",
+                    celular: "",
+
                 }}
             >
                 {({
@@ -58,36 +60,36 @@ const FormularioProfesores = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="fnac">Fecha de Nacimiento</label>
+                            <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
                             <Field
                                 type="text"
-                                name="fnacimiento"
-                                id="fnacimiento"
+                                name="fechaNacimiento"
+                                id="fechaNacimiento"
                                 placeholder="12/12/1999"
                             />
                             <ErrorMessage
-                                name="correo"
-                                component={() => <div>{errors.correo}</div>}
+                                name="fechaNacimiento"
+                                component={() => <div>{errors.fechaNacimiento}</div>}
                             />
                         </div>
 
                         <div>
-                        <label htmlFor="direccion">Direccion domiciliaria</label>
+                            <label htmlFor="direccionDomicilaria">Direccion domiciliaria</label>
                             <Field
                                 type="text"
-                                name="direccion"
-                                id="direccion"
+                                name="direccionDomicilaria"
+                                id="direccionDomicilaria"
                                 placeholder="Av. La Paz"
                             />
                             <ErrorMessage
-                                name="correo"
-                                component={() => <div>{errors.correo}</div>}
+                                name="direccionDomicilaria"
+                                component={() => <div>{errors.direccionDomicilaria}</div>}
                             />
-                            
+
                         </div>
 
                         <div>
-                        <label htmlFor="cedula">Cedula</label>
+                            <label htmlFor="cedula">Cedula</label>
                             <Field
                                 type="text"
                                 name="cedula"
@@ -95,32 +97,32 @@ const FormularioProfesores = () => {
                                 placeholder="1000123458"
                             />
                             <ErrorMessage
-                                name="correo"
-                                component={() => <div>{errors.correo}</div>}
+                                name="cedula"
+                                component={() => <div>{errors.cedula}</div>}
                             />
                         </div>
 
                         <div>
-                        <label htmlFor="nrepresentante">Celular</label>
+                            <label htmlFor="celular">Celular</label>
                             <Field
                                 type="text"
-                                name="nrepresentante"
-                                id="nrepresentante"
-                                placeholder="Juan Lopez"
+                                name="celular"
+                                id="celular"
+                                placeholder="0987654321"
                             />
                             <ErrorMessage
-                                name="correo"
-                                component={() => <div>{errors.correo}</div>}
+                                name="celular"
+                                component={() => <div>{errors.celular}</div>}
                             />
                         </div>
 
                         <div>
-                        <label htmlFor="crepresentante">Correo</label>
+                            <label htmlFor="correo">Correo</label>
                             <Field
                                 type="text"
-                                name="crepresentante"
-                                id="crepresentante"
-                                placeholder="0987654321"
+                                name="correo"
+                                id="correo"
+                                placeholder="mateo@correo.com"
                             />
                             <ErrorMessage
                                 name="correo"
@@ -129,7 +131,7 @@ const FormularioProfesores = () => {
                         </div>
 
                         <button type="submit">Enviar</button>
-                        {formulario && <h1>Formulario enviado</h1>}
+
                     </Form>
                 )}
             </Formik>

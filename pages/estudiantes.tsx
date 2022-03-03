@@ -7,6 +7,7 @@ import styles from '../src/styles/table.module.css'
 import buttonstyle from '../src/styles/button.module.css'
 import { useState } from 'react'
 import Modal from '../src/components/Modal'
+import axios from 'axios'
 
 
 const estudiantes = () => {
@@ -14,10 +15,19 @@ const estudiantes = () => {
   const data = useFetchData("estudiante");
   const [modal, setModal] = useState(false);
 
+  const handleDelete = (id: Number): void => {
+    axios.delete(`http://localhost:3002/estudiante/${id}`)
+
+  }
+
 
   return (
     <>
       <Layout>
+      <div className={buttonstyle.button}>
+        <button onClick={() => setModal(!modal)}>Agregar</button>
+
+      </div>
         <table className={styles.tabla}>
           <thead >
             <tr className={styles.encabezado} >
@@ -38,12 +48,18 @@ const estudiantes = () => {
                 <td>{estudiante.cedula}</td>
                 <td>{estudiante.nombreRepresentante}</td>
                 <td>{estudiante.celularRepresentante}</td>
+                <td><button className={buttonstyle.buttonDanger} onClick={(e) => handleDelete(estudiante.id)}>Eliminar</button></td>
               </tr>
             ))}
           </tbody>
 
         </table>
-        <Modal props={<FormularioEstudiantes /> } />
+
+        
+              
+        <Modal isOpenModal={modal} handleModalClose={() => setModal(false)} >
+          <FormularioEstudiantes handleModalClose={()=> setModal(false)}/>
+        </Modal>
       </Layout>
     </>
   )

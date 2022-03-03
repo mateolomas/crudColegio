@@ -14,8 +14,9 @@
 
 }
 
-.button button:nth-child(2) {
+.buttonDanger {
     background-color: red;
+    padding: 10px;
     color: white;
     border: none;
     cursor: pointer;
