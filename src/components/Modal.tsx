@@ -2,12 +2,12 @@ import { useState } from "react";
 
 import styles from "../styles/modal.module.css";
 import buttonstyle from "../styles/button.module.css";
-import Formulario from "./Form";
 
-function Modal(): any {
+
+function Modal({props}:any): any {
 
   const [modal, setModal] = useState<Boolean>(false);
-
+  console.log(props);
   return (
     <>
       <div className="modal-container">
@@ -20,7 +20,7 @@ function Modal(): any {
                 </div>
                 <div className={styles.modal_body}>
                   <div className="modal-body-info">
-                    <Formulario />
+                    {props}
                   </div>
 
                 </div>

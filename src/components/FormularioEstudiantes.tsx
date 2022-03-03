@@ -1,8 +1,9 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useState } from "react";
+import styles from "../styles/forms.module.css";
 
-const Formulario = () => {
+const FormularioEstudiantes = () => {
     const [formulario, setFormulario] = useState(false);
 
     return (
@@ -54,7 +55,7 @@ const Formulario = () => {
                     handleSubmit,
                 }) => (
                     <Form>
-                        <div>
+                        <div className={styles.field}>
                             <label htmlFor="nombre">Nombre</label>
                             <Field
                                 type="text"
@@ -68,9 +69,9 @@ const Formulario = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className={styles.field}> 
                             <label htmlFor="fnac">Fecha de Nacimiento</label>
-                            <Field
+                            <Field 
                                 type="text"
                                 name="fnacimiento"
                                 id="fnacimiento"
@@ -82,7 +83,7 @@ const Formulario = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className={styles.field}>
                         <label htmlFor="direccion">Direccion</label>
                             <Field
                                 type="text"
@@ -97,7 +98,7 @@ const Formulario = () => {
                             
                         </div>
 
-                        <div>
+                        <div className={styles.field}>
                         <label htmlFor="cedula">Cedula</label>
                             <Field
                                 type="text"
@@ -111,7 +112,7 @@ const Formulario = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className={styles.field}>
                         <label htmlFor="nrepresentante">Nombre representante</label>
                             <Field
                                 type="text"
@@ -125,7 +126,7 @@ const Formulario = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className={styles.field}> 
                         <label htmlFor="crepresentante">Celular representante</label>
                             <Field
                                 type="text"
@@ -148,4 +149,4 @@ const Formulario = () => {
     );
 };
 
-export default Formulario;
+export default FormularioEstudiantes;

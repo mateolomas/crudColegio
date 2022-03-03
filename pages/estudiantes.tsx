@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import Formulario from '../src/components/Form'
+import FormularioEstudiantes from '../src/components/FormularioEstudiantes';
 import Layout from '../src/components/Layout'
 import useFetchData from '../src/hooks/useFetchData'
 import styles from '../src/styles/table.module.css'
@@ -43,7 +43,7 @@ const estudiantes = () => {
           </tbody>
 
         </table>
-        <Modal />
+        <Modal props={<FormularioEstudiantes /> } />
       </Layout>
     </>
   )

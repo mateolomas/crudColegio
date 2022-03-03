@@ -17,6 +17,15 @@
       "cedula": 1004295729,
       "celular": "0998831832",
       "correo": "pedro@colegio.com"
+    },
+    {
+      "id": 2,
+      "nombre": "Juan Perez",
+      "direccionDomicilaria": "Quito",
+      "fechaNacimiento": "12/02/1995",
+      "cedula": 1004225729,
+      "celular": "0988831832",
+      "correo": "juan@colegio.com"
     }
   ],
   "estudiante": [

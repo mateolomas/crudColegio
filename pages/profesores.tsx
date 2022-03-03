@@ -4,6 +4,8 @@ import Layout from '../src/components/Layout'
 import useFetchData from '../src/hooks/useFetchData'
 import styles from '../src/styles/table.module.css'
 import buttonstyle from '../src/styles/button.module.css'
+import Modal from '../src/components/Modal'
+import FormularioProfesores from '../src/components/FormularioProfesores'
 
 const profesores = () => {
 
@@ -38,10 +40,7 @@ const profesores = () => {
 
   </table>
 
-  <div className={buttonstyle.button}> 
-          <button>Agregar</button>
-          <button>Eliminar</button>
-    </div>
+  <Modal props={<FormularioProfesores />} />
 
   </Layout>
   </>
