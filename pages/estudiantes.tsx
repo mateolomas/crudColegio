@@ -13,48 +13,38 @@ const estudiantes = () => {
 
   const data = useFetchData("estudiante");
   const [modal, setModal] = useState(false);
-  
+
 
   return (
     <>
-    <Layout>
-    <table className={styles.tabla}>
-      <thead >
-        <tr className={styles.encabezado} >
-          <th>Nombre</th>
-          <th>Fecha de Nacimiento</th>
-          <th>Direccion Domiciliaria</th>
-          <th>Cedula</th>
-          <th>Nombre representate</th>
-          <th>Celular representate</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(estudiante => (
-          <tr key={estudiante.id} className={styles.valuestr}>
-            <td>{estudiante.nombre}</td>
-            <td>{estudiante.fechaNacimiento}</td>
-            <td>{estudiante.direccionDomiciliaria}</td>
-            <td>{estudiante.cedula}</td>
-            <td>{estudiante.nombreRepresentante}</td>
-            <td>{estudiante.celularRepresentante}</td>
-          </tr>
-        ))}
-    </tbody>
+      <Layout>
+        <table className={styles.tabla}>
+          <thead >
+            <tr className={styles.encabezado} >
+              <th>Nombre</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Direccion Domiciliaria</th>
+              <th>Cedula</th>
+              <th>Nombre representate</th>
+              <th>Celular representate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map(estudiante => (
+              <tr key={estudiante.id} className={styles.valuestr}>
+                <td>{estudiante.nombre}</td>
+                <td>{estudiante.fechaNacimiento}</td>
+                <td>{estudiante.direccionDomiciliaria}</td>
+                <td>{estudiante.cedula}</td>
+                <td>{estudiante.nombreRepresentante}</td>
+                <td>{estudiante.celularRepresentante}</td>
+              </tr>
+            ))}
+          </tbody>
 
-    </table>
-    <div className={buttonstyle.button}> 
-     <button onClick={()=>setModal(!modal)}>Agregar</button>
-          
-    </div>
-
-    {modal && <Modal />}
-        
-
-
-
-
-    </Layout>
+        </table>
+        <Modal />
+      </Layout>
     </>
   )
 

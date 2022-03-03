@@ -55,6 +55,15 @@
       "cedula": 1529587879,
       "celularRepresentante": "0999991129",
       "nombreRepresentante": "Aracely Arcos"
+    },
+    {
+      "id": 5,
+      "nombre": "Samy Taro",
+      "fechaNacimiento": "15/04/1999",
+      "direccionDomiciliaria": "Quito",
+      "cedula": 9859587879,
+      "celularRepresentante": "09888991129",
+      "nombreRepresentante": "Sonia Pricos"
     }
   ],
   "asignatura": [
