@@ -8,6 +8,7 @@ export interface Schema {
 }
 
 export interface Asignatura {
+    id: number;
     idColegio: number;
     nombre:    string;
 }
@@ -21,6 +22,7 @@ export interface Colegio {
 }
 
 export interface Curso {
+    id:            number;
     idAsignatura:         number;
     idProfesor:           number;
     capacidadEstudiantes: number;
