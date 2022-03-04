@@ -5,37 +5,45 @@ import styles from "../styles/forms.module.css";
 import { estudianteValidation } from "../Validations/estudianteValidation";
 import usePostData from "../hooks/usePostData";
 import axios from "axios";
+import { Estudiante } from '../interfaces/schema';
 
 interface FormProps {
     handleModalClose: () => void
-  }
+    estudianteSelected: Estudiante
+}
 
-const FormularioEstudiantes = ({handleModalClose}: FormProps) => {
-    
-    
+const FormularioEstudiantes = ({ handleModalClose, estudianteSelected }: FormProps) => {
+
+    const defaultEstudiante = {
+        nombre: "",
+        fechaNacimiento: "",
+        direccionDomiciliaria: "",
+        cedula: "",
+        nombreRepresentante: "",
+        celularRepresentante: "",
+    }
+
+    const initialValues = estudianteSelected || defaultEstudiante;
+
+
     return (
         <>
             <Formik
                 onSubmit={(values, { resetForm }) => {
-                    
+
                     resetForm();
                     alert(values);
                     console.log(values);
                     handleModalClose();
-                    usePostData(values, "estudiante");
-                    
-                    
-                }}
-               validationSchema={estudianteValidation}
+                    if (
+                        usePostData(values, "estudiante");
 
-                initialValues={{
-                    nombre: "",
-                    fechaNacimiento: "",
-                    direccionDomiciliaria: "",
-                    cedula: "",
-                    nombreRepresentante: "",
-                    celularRepresentante: "",
+
+
                 }}
+                validationSchema={estudianteValidation}
+
+                initialValues={initialValues}
             >
                 {({
                     values,
@@ -60,9 +68,9 @@ const FormularioEstudiantes = ({handleModalClose}: FormProps) => {
                             />
                         </div>
 
-                        <div className={styles.field}> 
+                        <div className={styles.field}>
                             <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-                            <Field 
+                            <Field
                                 type="text"
                                 name="fechaNacimiento"
                                 id="fechaNacimiento"
@@ -75,7 +83,7 @@ const FormularioEstudiantes = ({handleModalClose}: FormProps) => {
                         </div>
 
                         <div className={styles.field}>
-                        <label htmlFor="direccionDomiciliaria">Direccion</label>
+                            <label htmlFor="direccionDomiciliaria">Direccion</label>
                             <Field
                                 type="text"
                                 name="direccionDomiciliaria"
@@ -86,11 +94,11 @@ const FormularioEstudiantes = ({handleModalClose}: FormProps) => {
                                 name="direccionDomiciliaria"
                                 component={() => <div>{errors.direccionDomiciliaria}</div>}
                             />
-                            
+
                         </div>
 
                         <div className={styles.field}>
-                        <label htmlFor="cedula">Cedula</label>
+                            <label htmlFor="cedula">Cedula</label>
                             <Field
                                 type="text"
                                 name="cedula"
@@ -104,7 +112,7 @@ const FormularioEstudiantes = ({handleModalClose}: FormProps) => {
                         </div>
 
                         <div className={styles.field}>
-                        <label htmlFor="nombreRepresentante">Nombre representante</label>
+                            <label htmlFor="nombreRepresentante">Nombre representante</label>
                             <Field
                                 type="text"
                                 name="nombreRepresentante"
@@ -117,8 +125,8 @@ const FormularioEstudiantes = ({handleModalClose}: FormProps) => {
                             />
                         </div>
 
-                        <div className={styles.field}> 
-                        <label htmlFor="crepresentante">Celular representante</label>
+                        <div className={styles.field}>
+                            <label htmlFor="crepresentante">Celular representante</label>
                             <Field
                                 type="text"
                                 name="celularRepresentante"
