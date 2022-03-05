@@ -40,7 +40,7 @@ export interface Estudiante {
     nombre:                string;
     fechaNacimiento:       string;
     direccionDomiciliaria: string;
-    cedula:                number;
+    cedula:                string;
     celularRepresentante:  string;
     nombreRepresentante:   string;
 }

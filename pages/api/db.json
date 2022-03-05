@@ -30,67 +30,49 @@
   ],
   "estudiante": [
     {
-      "nombre": "Mateo ",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 1
+      "id": 1,
+      "nombre": "Mateo Perez",
+      "fechaNacimiento": "12/02/1990",
+      "direccionDomiciliaria": "Ibarra",
+      "cedula": "1004295729",
+      "nombreRepresentante": "Pedro Carbo",
+      "celularRepresentante": "0998831832"
     },
     {
-      "nombre": "Sebastian ",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 2
+      "id": 2,
+      "nombre": "Mateo Perez",
+      "fechaNacimiento": "12/02/1990",
+      "direccionDomiciliaria": "Ibarra",
+      "cedula": "1004295729",
+      "nombreRepresentante": "Pedro Carbo",
+      "celularRepresentante": "0998831832"
     },
     {
-      "nombre": "Juan ",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 3
+      "id": 3,
+      "nombre": "",
+      "fechaNacimiento": "",
+      "direccionDomiciliaria": "",
+      "cedula": "",
+      "nombreRepresentante": "",
+      "celularRepresentante": ""
     },
     {
-      "nombre": "Pedrito ",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 4
+      "id": 4,
+      "nombre": "Mateo Perez",
+      "fechaNacimiento": "12/02/1990",
+      "direccionDomiciliaria": "Ibarra",
+      "cedula": "1004295729",
+      "nombreRepresentante": "Pedro Carbo",
+      "celularRepresentante": "0998831832"
     },
     {
-      "nombre": "Tucancito ",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 5
-    },
-    {
-      "nombre": "Aracely",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 6
-    },
-    {
-      "nombre": "Oscar",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 7
+      "id": 5,
+      "nombre": "Mateo Perez",
+      "fechaNacimiento": "12/02/1990",
+      "direccionDomiciliaria": "Ibarra",
+      "cedula": "1004295729",
+      "nombreRepresentante": "Pedro Carbo",
+      "celularRepresentante": "0998831832"
     }
   ],
   "asignatura": [
