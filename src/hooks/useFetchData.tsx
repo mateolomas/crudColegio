@@ -1,26 +1,41 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Data, Estudiante } from '../interfaces/schema';
 
-
-//genericos 
-
-const useFetchData = (tipo: String): any[] => {
-    const [data, setData] = useState([])
-
-    const fetchData = async () => {
-        const res = await axios.get(`http://localhost:3002/${tipo}`)
-        setData(res.data)
-
-        
-    }
-    
-useEffect(() => {
-    fetchData();
-},[])
-
-  return data 
+const initialState: Data = {
+    data: [],
+    loading: true,
+    error: undefined
 }
+
+
+
+const useFetchData = (tipo: String): Data => {
+    const [data, setData] = useState(initialState)
+    useEffect(() => {
+
+        axios.get(`http://localhost:3002/${tipo}`)
+            .then(res => {
+                setData({
+                    data: res.data,
+                    loading: false,
+                    error: undefined
+                })
+            })
+            .catch(err => {
+                setData({
+                    data: [] as Estudiante[],
+                    loading: false,
+                    error: err
+                })
+            })
+
+    }, [])
+
+    return data
+}
+
 
 
 export default useFetchData

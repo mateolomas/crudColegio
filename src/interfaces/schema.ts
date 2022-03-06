@@ -1,3 +1,10 @@
+export interface Data {
+    data: Estudiante[],
+    loading: boolean;
+    error: any;
+}
+
+
 export interface Schema {
     colegio:          Colegio[];
     profesor:         Profesor[];

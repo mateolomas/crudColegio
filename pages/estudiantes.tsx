@@ -8,15 +8,18 @@ import buttonstyle from '../src/styles/button.module.css'
 import { useState } from 'react'
 import Modal from '../src/components/Modal'
 import axios from 'axios'
-import ModalErase from '../src/components/ModalErase';
-import { Estudiante } from '../src/interfaces/schema';
+import { Data, Estudiante } from '../src/interfaces/schema';
 import TableDataEstudiante from '../src/components/TableDataEstudiante';
 
 const estudiantes = () => {
 
-  const estudianteData = useFetchData("estudiante");
-  const [data, setData] = useState<Estudiante[]>(estudianteData);
+  const { data, loading, error }: Data = useFetchData('estudiante')
   const [modal, setModal] = useState(false);
+
+  const [estudentData, setData] = useState(data);
+
+
+
   const [deleteModal, setDeleteModal] = useState(false);
   const [estudiante, setEstudiante] = useState<Estudiante>({
     id: 0,
@@ -29,10 +32,13 @@ const estudiantes = () => {
 
   });
 
-  useEffect(() => {
-    setData(estudianteData);
-  }, [estudianteData]);
 
+
+  /*
+  useEffect(() => {
+      setData(data);
+    }, [data]);
+  */
 
   const handleDeleteEst = (id: Number): void => {
     setDeleteModal(true);
@@ -70,17 +76,26 @@ const estudiantes = () => {
   }
 
 
+
+
   return (
     <>
       <Layout>
+
+        <h1>Informacion de Estudiantes</h1>
+        {loading && <p>Cargando...</p>}
+        {error && <p>Error</p>}
+
+
         {/*Agregar data y abre formulario en el modal */}
         <div className={buttonstyle.button}>
           <button onClick={() => setModal(!modal)}>Agregar</button>
         </div>
         <Modal isOpenModal={modal} handleModalClose={() => setModal(false)} >
-          <FormularioEstudiantes handleConfirmEdit={() => handleConfirmEdit} handleModalClose={() => setModal(false)} estudianteSelected={estudiante} />
+          <FormularioEstudiantes handleModalClose={() => setModal(false)} estudianteSelected={estudiante} />
         </Modal>
         {/*tabla */}
+
         <table className={styles.tabla}>
           <thead >
             <tr className={styles.encabezado} >
@@ -93,23 +108,26 @@ const estudiantes = () => {
               <th>Celular representate</th>
             </tr>
           </thead>
+
+
           <tbody>
             <TableDataEstudiante
               data={data}
               handleDeleteEst={handleDeleteEst}
               handleEditEst={handleEditEst}
-              handleConfirmEdit={handleConfirmEdit}
             />
+
           </tbody>
+
         </table>
-        <ModalErase isOpenModal={deleteModal} handleModalClose={() => setDeleteModal(false)} >
+        <Modal isOpenModal={deleteModal} handleModalClose={() => setDeleteModal(false)} >
           <div style={{ "color": "black" }}>
             <h1 >¿Esta seguro que desea eliminar este estudiante?</h1>
             <p >Nombre: {estudiante.nombre}</p>
             <button onClick={() => handleConfirmDelete(estudiante.id)}>Eliminar</button>
             <button onClick={() => setDeleteModal(false)}>Cancelar</button>
           </div>
-        </ModalErase>
+        </Modal>
       </Layout>
     </>
   )

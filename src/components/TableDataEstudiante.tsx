@@ -8,12 +8,14 @@ interface TableProps {
   data: Estudiante[];
   handleDeleteEst: (id: Number) => void;
   handleEditEst: (id: Number) => void;
-
 }
+
+
 
 const TableDataEstudiante = ({ data, handleDeleteEst, handleEditEst }: TableProps) => {
   return (
     <>
+
       {data.map(estudiante => (
         <tr key={estudiante.id} className={styles.valuestr}>
           <td>{estudiante.id}</td>
