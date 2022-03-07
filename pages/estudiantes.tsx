@@ -13,10 +13,13 @@ import TableDataEstudiante from '../src/components/TableDataEstudiante';
 
 const estudiantes = () => {
 
-  const { data, loading, error }: Data = useFetchData('estudiante')
+  const AllDataEstudiante: Data = useFetchData('estudiante');
+  let data = AllDataEstudiante.data;
+  const [estudentData, setData] = useState<Estudiante[]>([...AllDataEstudiante.data]);
+  console.log(data, "estdara")
+
   const [modal, setModal] = useState(false);
 
-  const [estudentData, setData] = useState(data);
 
 
 
@@ -32,17 +35,18 @@ const estudiantes = () => {
 
   });
 
-
-
-  /*
   useEffect(() => {
-      setData(data);
-    }, [data]);
-  */
+    const fetchData = async () => {
+      const result = await axios(`http://localhost:3002/estudiante`);
+      setData(result.data);
+    }
+    fetchData();
+  }, [estudentData]);
+
 
   const handleDeleteEst = (id: Number): void => {
     setDeleteModal(true);
-    const estudiante = data.find(est => est.id === id);
+    const estudiante = estudentData.find(est => est.id === id);
     if (estudiante)
       setEstudiante(estudiante);
 
@@ -51,8 +55,8 @@ const estudiantes = () => {
   const handleConfirmDelete = (id: Number): void => {
     axios.delete(`http://localhost:3002/estudiante/${id}`);
     setDeleteModal(false);
-    const estudianteIndex = data.findIndex(est => est.id === id);
-    const newData = [...data];
+    const estudianteIndex = estudentData.findIndex(est => est.id === id);
+    const newData = [...estudentData];
     newData.splice(estudianteIndex, 1);
     setData(newData);
 
@@ -60,22 +64,11 @@ const estudiantes = () => {
 
   const handleEditEst = (id: Number): void => {
     setModal(true);
-    const estudiante = data.find(est => est.id === id);
+    const estudiante = estudentData.find(est => est.id === id);
     if (estudiante)
       setEstudiante(estudiante);
 
   }
-
-  const handleConfirmEdit = (id: Number): void => {
-    axios.put(`http://localhost:3002/estudiante/${id}`, estudiante);
-    setModal(false);
-    const estudianteIndex = data.findIndex(est => est.id === id);
-    const newData = [...data];
-    newData.splice(estudianteIndex, 1);
-    setData(newData);
-  }
-
-
 
 
   return (
@@ -83,9 +76,9 @@ const estudiantes = () => {
       <Layout>
 
         <h1>Informacion de Estudiantes</h1>
-        {loading && <p>Cargando...</p>}
+        {/* {loading && <p>Cargando...</p>}
         {error && <p>Error</p>}
-
+ */}
 
         {/*Agregar data y abre formulario en el modal */}
         <div className={buttonstyle.button}>
@@ -112,7 +105,7 @@ const estudiantes = () => {
 
           <tbody>
             <TableDataEstudiante
-              data={data}
+              data={estudentData}
               handleDeleteEst={handleDeleteEst}
               handleEditEst={handleEditEst}
             />

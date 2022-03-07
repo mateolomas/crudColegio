@@ -31,11 +31,9 @@ const FormularioEstudiantes = ({ handleModalClose, estudianteSelected }: FormPro
         <>
             <Formik
                 onSubmit={(values, { resetForm }) => {
-
                     resetForm();
-                    alert(values);
-                    console.log(values);
                     handleModalClose();
+                    //axios.post(`http://localhost:3002/estudiante`, values);
                     estudianteSelected
                         ? axios.put(`http://localhost:3002/estudiante/${estudianteSelected.id}`, values)
                         : axios.post(`http://localhost:3002/estudiante`, values);

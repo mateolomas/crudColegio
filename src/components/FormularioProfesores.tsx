@@ -1,6 +1,5 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useState } from "react";
 import { profesorValidation } from "../Validations/profesorValidation";
 import usePostData from '../hooks/usePostData';
 
