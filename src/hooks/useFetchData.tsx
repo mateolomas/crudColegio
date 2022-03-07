@@ -9,31 +9,29 @@ const initialState: Data = {
     error: undefined
 }
 
+
+
 const useFetchData = (tipo: String): Data => {
     const [data, setData] = useState(initialState)
-
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3002/${tipo}`)
+
+        axios.get(`http://localhost:3002/${tipo}`)
+            .then(res => {
                 setData({
-                    data: response.data,
+                    data: res.data,
                     loading: false,
                     error: undefined
                 })
-            } catch (err) {
+            })
+            .catch(err => {
                 setData({
                     data: [] as Estudiante[],
                     loading: false,
                     error: err
                 })
-            }
-        }
+            })
 
-        fetchData()
-    }
-
-        , [])
+    }, [])
 
     return data
 }
