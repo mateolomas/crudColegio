@@ -30,8 +30,8 @@ export interface Colegio {
 
 export interface Curso {
     id:            number;
-    idAsignatura:         number;
-    idProfesor:           number;
+    idAsignatura:         string;
+    idProfesor:           string;
     capacidadEstudiantes: number;
     fechaInicio:          string;
     fechaFin:             string;

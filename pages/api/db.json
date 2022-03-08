@@ -181,11 +181,27 @@
   "curso": [
     {
       "id": 1,
-      "idAsignatura": 1,
+      "idAsignatura": "12",
       "idProfesor": 1,
       "capacidadEstudiantes": 30,
       "fechaInicio": "12/02/2020",
       "fechaFin": "12/03/2020"
+    },
+    {
+      "id": 2,
+      "idAsignatura": "0003",
+      "idProfesor": "0001",
+      "capacidadEstudiantes": "58",
+      "fechaInicio": "2022-03-03",
+      "fechaFin": "2022-03-06"
+    },
+    {
+      "id": 3,
+      "idAsignatura": "0006",
+      "idProfesor": "0568",
+      "capacidadEstudiantes": "80",
+      "fechaInicio": "2022-03-03",
+      "fechaFin": "2022-03-06"
     }
   ],
   "cursoEstudiantes": [

@@ -2,38 +2,51 @@ import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import styles from "../styles/forms.module.css";
 import usePostData from "../hooks/usePostData";
-
+import { Curso } from "../interfaces/schema";
 
 
 interface FormProps {
     handleModalClose: () => void
+    cursoSelected: Curso
+    handleCreateCurso: (curso: Curso) => void
+    handleEditCurso: (curso: Curso) => void
+
 }
 
-const FormularioCursos = ({ handleModalClose }: FormProps) => {
+const FormularioCursos = ({ handleModalClose, cursoSelected, handleCreateCurso, handleEditCurso }: FormProps) => {
+
+    const defaultCurso = {
+        idAsignatura: "",
+        idProfesor: "",
+        capacidadEstudiantes: 0,
+        fechaInicio: "",
+        fechaFin: "",
+    }
+
+    const initialValues = cursoSelected || defaultCurso;
 
 
     return (
         <>
             <Formik
                 onSubmit={(values, { resetForm }) => {
-
                     resetForm();
-                    alert(values);
-                    console.log(values);
                     handleModalClose();
-                    usePostData(values, "curso");
+                    if (cursoSelected.idAsignatura === ""
+                        && cursoSelected.idProfesor === ""
+                        && cursoSelected.capacidadEstudiantes === 0
+                        && cursoSelected.fechaInicio === ""
+                        && cursoSelected.fechaFin === "") {
+                        handleCreateCurso(values);
+                    } else {
+                        handleEditCurso(values);
+                    }
+
 
                 }}
                 //validationSchema={estudianteValidation}
 
-                initialValues={{
-                    
-                    idAsignatura: "",
-                    idProfesor: "",
-                    capacidadEstudiantes: "",
-                    fechaInicio: "",
-                    fechaFin: "",
-                }}
+                initialValues={initialValues}
             >
                 {({
                     values,
@@ -72,7 +85,7 @@ const FormularioCursos = ({ handleModalClose }: FormProps) => {
                             />
                         </div>
 
-                        
+
 
 
                         <div className={styles.field}>
@@ -89,7 +102,7 @@ const FormularioCursos = ({ handleModalClose }: FormProps) => {
                             />
                         </div>
 
-                       
+
 
                         <div className={styles.field}>
                             <label htmlFor="fechaInicio">Fecha Inicio</label>
@@ -120,7 +133,7 @@ const FormularioCursos = ({ handleModalClose }: FormProps) => {
                         </div>
 
                         <button type="submit">Enviar</button>
-                        
+
                     </Form>
                 )}
             </Formik>
