@@ -3,13 +3,28 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useState } from "react";
 import { profesorValidation } from "../Validations/profesorValidation";
 import usePostData from '../hooks/usePostData';
-
+import { Profesor } from '../interfaces/schema';
 interface FormProps {
     handleModalClose: () => void
+    profesorSelected: Profesor
+    handleCreateProfesor: (profesor: Profesor) => void
+    handleEditProfesor: (profesor: Profesor) => void
+
 }
 
 
-const FormularioProfesores = ({ handleModalClose }: FormProps) => {
+const FormularioProfesores = ({ handleModalClose, profesorSelected, handleCreateProfesor, handleEditProfesor }: FormProps) => {
+
+    const defaultProfesor = {
+        nombre: "",
+        direccionDomicilaria: "",
+        fechaNacimiento: "",
+        cedula: 0,
+        celular: "",
+        correo: ""
+    }
+
+    const initialValues = profesorSelected || defaultProfesor;
 
 
     return (
@@ -17,24 +32,24 @@ const FormularioProfesores = ({ handleModalClose }: FormProps) => {
             <Formik
                 onSubmit={(values, { resetForm }) => {
                     resetForm();
-                    console.log(values);
-                    alert(values);
                     handleModalClose();
-                    usePostData(values, "profesor");
+                    if (profesorSelected.nombre === ""
+                        && profesorSelected.direccionDomicilaria === "" &&
+                        profesorSelected.fechaNacimiento === ""
+                        && profesorSelected.cedula === 0 &&
+                        profesorSelected.celular === "" &&
+                        profesorSelected.correo === "") {
+                        handleCreateProfesor(values);
+                    }
+                    else {
+                        handleEditProfesor(values);
+                    }
 
                 }}
 
                 validationSchema={profesorValidation}
 
-                initialValues={{
-                    nombre: "",
-                    correo: "",
-                    fechaNacimiento: "",
-                    direccionDomicilaria: "",
-                    cedula: "",
-                    celular: "",
-
-                }}
+                initialValues={initialValues}
             >
                 {({
                     values,

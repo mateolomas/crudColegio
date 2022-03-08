@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Data, Estudiante } from '../interfaces/schema';
 
-const initialState: Data = {
+
+const initialState: any = {
     data: [],
     loading: true,
     error: undefined
@@ -11,7 +12,7 @@ const initialState: Data = {
 
 
 
-const useFetchData = (tipo: String): Data => {
+const useFetchData = (tipo: String): any => {
     const [data, setData] = useState(initialState)
     useEffect(() => {
 

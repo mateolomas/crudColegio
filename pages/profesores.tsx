@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import Layout from '../src/components/Layout'
 import useFetchData from '../src/hooks/useFetchData'
 import styles from '../src/styles/table.module.css'
@@ -8,26 +8,146 @@ import buttonstyle from '../src/styles/button.module.css'
 import Modal from '../src/components/Modal'
 import FormularioProfesores from '../src/components/FormularioProfesores';
 import axios from 'axios'
+import TableDataProfesores from '../src/components/TableDataProfesores';
+import { Profesor } from '../src/interfaces/schema';
 
+interface Data {
+  data: Profesor[],
+  loading: boolean;
+  error: any;
+}
 
-const profesores = () => {
+const Profesores = () => {
 
+  const { data, loading, error }: Data = useFetchData('profesor');
   const [modal, setModal] = useState(false);
-  const data = useFetchData('profesor')
+  const [profesorData, setData] = useState(data);
+  const [addModal, setAddModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const handleDelete = (id: Number): void => {
-    axios.delete(`http://localhost:3002/profesor/${id}`)
+  const [profesor, setProfesor] = useState<Profesor>({
+    id: 0,
+    nombre: "",
+    direccionDomicilaria: "",
+    fechaNacimiento: "",
+    cedula: 0,
+    celular: "",
+    correo: ""
+
+  });
+
+  const defaultProfesor: Profesor = {
+    id: 0,
+    nombre: "",
+    direccionDomicilaria: "",
+    fechaNacimiento: "",
+    cedula: 0,
+    celular: "",
+    correo: ""
+  }
+
+  useEffect(() => {
+    setData(data);
+  }, [data]);
+
+
+  const handleOpenModalDelete = (id: Number): void => {
+    setDeleteModal(true);
+    const profesor = profesorData.find(est => est.id === id);
+    profesor ? setProfesor(profesor) : setProfesor(defaultProfesor);
+  }
+
+  const handleDeleteProfesor = (id: Number): void => {
+    axios.delete(`http://localhost:3002/profesor/${id}`);
+    setDeleteModal(false);
+    const profesorIndex = profesorData.findIndex(est => est.id === id);
+    const newData = [...profesorData];
+    newData.splice(profesorIndex, 1);
+    setData(newData);
 
   }
+
+  const handleCreateProfesor = (profesorAux: Profesor): void => {
+    axios.post(`http://localhost:3002/profesor`, profesorAux).then(res => {
+      const dataProf = res.data;
+      const newData = [...profesorData];
+      newData.push(dataProf);
+      setData(newData);
+    })
+      .catch(
+        error => {
+          console.log(error, "error");
+          alert(error);
+        }
+      )
+
+  }
+
+
+  const handleOpenModalEditEst = (id: Number): void => {
+    setModal(true);
+    const profesor = profesorData.find(est => est.id === id);
+    if (profesor)
+      setProfesor(profesor);
+  }
+
+  const handleEditProfesor = (profesorAux: Profesor): void => {
+    axios.put(`http://localhost:3002/profesor/${profesorAux.id}`, profesorAux).then(res => {
+      const dataProf = res.data;
+      const newData = [...profesorData];
+      const profesorIndex = profesorData.findIndex(est => est.id === profesorAux.id);
+      newData[profesorIndex] = dataProf;
+      setData(newData);
+    })
+      .catch(
+        error => {
+          console.log(error, "error");
+          alert(error);
+        }
+      )
+  }
+
+
+
+
+
+
+
 
 
   return (
     <>
       <Layout>
-        <div className={buttonstyle.button}>
-          <button onClick={() => setModal(!modal)}>Agregar</button>
+        <h1>Informacion de Prof</h1>
+        {loading && <p>Cargando...</p>}
+        {error && <p>Error</p>}
 
+
+        {/*Agregar data y abre formulario en el modal */}
+        <div className={buttonstyle.button}>
+          <button onClick={() => setAddModal(!modal)}>Agregar</button>
         </div>
+
+        <Modal isOpenModal={addModal} handleModalClose={() => setAddModal(false)}>
+          <FormularioProfesores
+            handleCreateProfesor={handleCreateProfesor}
+            handleModalClose={() => setAddModal(false)}
+            profesorSelected={defaultProfesor}
+            handleEditProfesor={handleEditProfesor}
+          />
+        </Modal>
+
+
+
+        {/*edit button*/}
+        <Modal isOpenModal={modal} handleModalClose={() => setModal(false)} >
+          <FormularioProfesores
+            handleCreateProfesor={handleCreateProfesor}
+            handleModalClose={() => setModal(false)}
+            profesorSelected={profesor}
+            handleEditProfesor={handleEditProfesor}
+          />
+
+        </Modal>
 
         <table className={styles.tabla}>
           <thead>
@@ -42,42 +162,29 @@ const profesores = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map(profesor => (
-              <tr key={profesor.id} className={styles.valuestr}>
-                <td>{profesor.id}</td>
-                <td>{profesor.nombre}</td>
-                <td>{profesor.fechaNacimiento}</td>
-                <td>{profesor.direccionDomicilaria}</td>
-                <td>{profesor.cedula}</td>
-                <td>{profesor.celular}</td>
-                <td>{profesor.correo}</td>
-                <td><button className={buttonstyle.buttonDanger} onClick={() => setDeleteModal(!deleteModal)}>
-                  <p>Eliminar</p>
-                  <Modal isOpenModal={deleteModal} handleModalClose={() => setDeleteModal(false)} >
-                    <div>
-                      <h1 style={{ "color": "black" }}>¿Esta seguro que desea eliminar este profesor?</h1>
-                      <p style={{ "color": "black" }}>Nombre: {profesor.nombre}</p>
-                      <button onClick={() => handleDelete(profesor.id)}>Eliminar</button>
-                      <button onClick={() => setDeleteModal(false)}>Cancelar</button>
+            <TableDataProfesores
+              data={profesorData}
+              handleDeleteProfesor={handleOpenModalDelete}
+              handleEditProfesor={handleOpenModalEditEst}
 
-                    </div>
-
-                  </Modal>
-
-                </button></td>
-              </tr>
-            ))}
+            />
           </tbody>
 
         </table>
-
-        <Modal isOpenModal={modal} handleModalClose={() => setModal(false)} >
-          <FormularioProfesores handleModalClose={() => setModal(false)} />
+        <Modal isOpenModal={deleteModal} handleModalClose={() => setDeleteModal(false)} >
+          <div style={{ "color": "black" }}>
+            <h1 >¿Esta seguro que desea eliminar este profesor?</h1>
+            <p >Nombre: {profesor.nombre}</p>
+            <button onClick={() => handleDeleteProfesor(profesor.id)}>Eliminar</button>
+            <button onClick={() => setDeleteModal(false)}>Cancelar</button>
+          </div>
         </Modal>
+
+
 
       </Layout>
     </>
   )
 }
 
-export default profesores
+export default Profesores

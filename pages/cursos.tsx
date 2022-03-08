@@ -10,7 +10,7 @@ import axios from 'axios';
 import FormularioCursos from '../src/components/FormularioCursos';
 import Modal from '../src/components/Modal';
 
-const cursos = () => {
+const Cursos = () => {
 
   const curso = useFetchData('curso');
   const asignaturas = useFetchData('asignatura');
@@ -58,7 +58,7 @@ const cursos = () => {
                 <td>{curso.capacidadEstudiantes}</td>
                 <td>{curso.fechaInicio}</td>
                 <td>{curso.fechaFin}</td>
-                <td><button type="submit" className={buttonstyle.buttonDanger} onClick={()=> handleDeleteCurso(curso.id)}>Eliminar</button></td>
+                <td><button type="submit" className={buttonstyle.buttonDanger} onClick={() => handleDeleteCurso(curso.id)}>Eliminar</button></td>
               </tr>
             );
           })}
@@ -67,12 +67,12 @@ const cursos = () => {
       </table>
 
       <Modal isOpenModal={modalCurso} handleModalClose={() => setModalCurso(false)} >
-          <FormularioCursos handleModalClose={()=> setModalCurso(false)}/>
+        <FormularioCursos handleModalClose={() => setModalCurso(false)} />
       </Modal>
 
       <h2>Asignatura</h2>
       <div className={buttonstyle.button}>
-        <button onClick = {() => setModalAsignatura(!modalAsignatura)}>Agregar asignatura</button>
+        <button onClick={() => setModalAsignatura(!modalAsignatura)}>Agregar asignatura</button>
 
       </div>
 
@@ -91,17 +91,17 @@ const cursos = () => {
                 <td>{asignatura.id}</td>
                 <td>{asignatura.nombre}</td>
                 <td>{asignatura.idColegio}</td>
-                <td><button className={buttonstyle.buttonDanger} onClick={()=>handleDeleteAsignatura(asignatura.id)}>Eliminar</button></td>
+                <td><button className={buttonstyle.buttonDanger} onClick={() => handleDeleteAsignatura(asignatura.id)}>Eliminar</button></td>
               </tr>);
           })}
         </tbody>
       </table>
       <Modal isOpenModal={modalAsignatura} handleModalClose={() => setModalAsignatura(false)} >
-          <FormularioCursos handleModalClose={()=> setModalAsignatura(false)}/>
+        <FormularioCursos handleModalClose={() => setModalAsignatura(false)} />
       </Modal>
     </Layout>
 
   )
 }
 
-export default cursos
+export default Cursos

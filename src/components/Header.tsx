@@ -24,10 +24,10 @@ function Header() {
           <Link href='/Estudiantes'>
             <a>Estudiantes</a>
           </Link>
-          <Link href='/cursos'>
+          <Link href='/Cursos'>
             <a>Cursos</a>
           </Link>
-          <Link href='/profesores'>
+          <Link href='/Profesores'>
             <a>Profesores</a>
           </Link>
           <Link href="/">
