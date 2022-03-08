@@ -10,12 +10,15 @@ import { Estudiante } from '../interfaces/schema';
 interface FormProps {
     handleModalClose: () => void
     estudianteSelected: Estudiante
+    handleCreateEstudent: (estudiante: Estudiante) => void
+    handleEditEstudent: (estudiante: Estudiante) => void
 
 }
 
-const FormularioEstudiantes = ({ handleModalClose, estudianteSelected }: FormProps) => {
+const FormularioEstudiantes = ({ handleModalClose, estudianteSelected, handleCreateEstudent, handleEditEstudent }: FormProps) => {
 
     const defaultEstudiante = {
+
         nombre: "",
         fechaNacimiento: "",
         direccionDomiciliaria: "",
@@ -31,18 +34,15 @@ const FormularioEstudiantes = ({ handleModalClose, estudianteSelected }: FormPro
         <>
             <Formik
                 onSubmit={(values, { resetForm }) => {
-
                     resetForm();
-                    alert(values);
-                    console.log(values);
                     handleModalClose();
-                    estudianteSelected
-                        ? axios.put(`http://localhost:3002/estudiante/${estudianteSelected.id}`, values)
-                        : axios.post(`http://localhost:3002/estudiante`, values);
-
-                    //handleConfirmEdit();
-
-                    //usePostData(values, "estudiante");
+                    if (estudianteSelected.nombre === "" && estudianteSelected.fechaNacimiento === ""
+                        && estudianteSelected.direccionDomiciliaria === "" && estudianteSelected.cedula === ""
+                        && estudianteSelected.nombreRepresentante === "" && estudianteSelected.celularRepresentante === "") {
+                        handleCreateEstudent(values);
+                    } else {
+                        handleEditEstudent(values);
+                    }
 
                 }}
                 validationSchema={estudianteValidation}

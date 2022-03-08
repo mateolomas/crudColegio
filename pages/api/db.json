@@ -30,13 +30,58 @@
   ],
   "estudiante": [
     {
-      "id": 1,
-      "nombre": "Mateo Perez",
-      "fechaNacimiento": "12/02/1990",
-      "direccionDomiciliaria": "IbarraY",
-      "cedula": "1004295729",
-      "nombreRepresentante": "Pedro Carbo",
-      "celularRepresentante": "0998831832"
+      "nombre": "7w",
+      "fechaNacimiento": "t",
+      "direccionDomiciliaria": "t",
+      "cedula": "t",
+      "nombreRepresentante": "t",
+      "celularRepresentante": "t",
+      "id": 1
+    },
+    {
+      "nombre": "tw1",
+      "fechaNacimiento": "t",
+      "direccionDomiciliaria": "t",
+      "cedula": "t",
+      "nombreRepresentante": "t",
+      "celularRepresentante": "t",
+      "id": 2
+    },
+    {
+      "nombre": "t",
+      "fechaNacimiento": "t",
+      "direccionDomiciliaria": "t",
+      "cedula": "t",
+      "nombreRepresentante": "t",
+      "celularRepresentante": "t",
+      "id": 3
+    },
+    {
+      "nombre": "t",
+      "fechaNacimiento": "t",
+      "direccionDomiciliaria": "t",
+      "cedula": "t",
+      "nombreRepresentante": "t",
+      "celularRepresentante": "t",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "nombre": "iuyutfrtq",
+      "fechaNacimiento": "hjklkijuhy",
+      "direccionDomiciliaria": "tgyhujiko",
+      "cedula": "kijuhgytf",
+      "nombreRepresentante": "hujikolo",
+      "celularRepresentante": "juhyg"
+    },
+    {
+      "id": 6,
+      "nombre": "trfyguhij",
+      "fechaNacimiento": "klkojiuhytyguhijo",
+      "direccionDomiciliaria": "jiuhgghj",
+      "cedula": "kjhgghj",
+      "nombreRepresentante": "jhgguhuij",
+      "celularRepresentante": "ihgguyh"
     },
     {
       "nombre": "Mateo Sebastias",
@@ -45,7 +90,277 @@
       "cedula": "10089658523",
       "nombreRepresentante": "Juan Perez",
       "celularRepresentante": "0987654321",
-      "id": 5
+      "id": 7
+    },
+    {
+      "id": 8,
+      "nombre": "iuyutfrt",
+      "fechaNacimiento": "hjklkijuhy",
+      "direccionDomiciliaria": "tgyhujiko",
+      "cedula": "kijuhgytf",
+      "nombreRepresentante": "hujikolo",
+      "celularRepresentante": "juhyg"
+    },
+    {
+      "id": 9,
+      "nombre": "trfyguhij",
+      "fechaNacimiento": "klkojiuhytyguhijo",
+      "direccionDomiciliaria": "jiuhgghj",
+      "cedula": "kjhgghj",
+      "nombreRepresentante": "jhgguhuij",
+      "celularRepresentante": "ihgguyh"
+    },
+    {
+      "nombre": "Mateo Sebastias",
+      "fechaNacimiento": "12/12/2589",
+      "direccionDomiciliaria": "Av La paz",
+      "cedula": "10089658523",
+      "nombreRepresentante": "Juan Perez",
+      "celularRepresentante": "0987654321",
+      "id": 10
+    },
+    {
+      "id": 11,
+      "nombre": "iuyutfrt",
+      "fechaNacimiento": "hjklkijuhy",
+      "direccionDomiciliaria": "tgyhujiko",
+      "cedula": "kijuhgytf",
+      "nombreRepresentante": "hujikolo",
+      "celularRepresentante": "juhyg"
+    },
+    {
+      "id": 12,
+      "nombre": "trfyguhij",
+      "fechaNacimiento": "klkojiuhytyguhijo",
+      "direccionDomiciliaria": "jiuhgghj",
+      "cedula": "kjhgghj",
+      "nombreRepresentante": "jhgguhuij",
+      "celularRepresentante": "ihgguyh"
+    },
+    {
+      "id": 14,
+      "nombre": "iuyutfrt",
+      "fechaNacimiento": "hjklkijuhy",
+      "direccionDomiciliaria": "tgyhujiko",
+      "cedula": "kijuhgytf",
+      "nombreRepresentante": "hujikolo",
+      "celularRepresentante": "juhyg"
+    },
+    {
+      "nombre": "Mateo Sebastiasqwd",
+      "fechaNacimiento": "12/12/2589",
+      "direccionDomiciliaria": "Av La paz",
+      "cedula": "10089658523",
+      "nombreRepresentante": "Juan Perez",
+      "celularRepresentante": "0987654321",
+      "id": 15
+    },
+    {
+      "id": 16,
+      "nombre": "2www",
+      "fechaNacimiento": "2",
+      "direccionDomiciliaria": "2",
+      "cedula": "2",
+      "nombreRepresentante": "2",
+      "celularRepresentante": "2"
+    },
+    {
+      "id": 17,
+      "nombre": "1ww",
+      "fechaNacimiento": "1",
+      "direccionDomiciliaria": "1",
+      "cedula": "1",
+      "nombreRepresentante": "1",
+      "celularRepresentante": "1"
+    },
+    {
+      "id": 18,
+      "nombre": "5wwwqqq111",
+      "fechaNacimiento": "5",
+      "direccionDomiciliaria": "5",
+      "cedula": "5",
+      "nombreRepresentante": "5",
+      "celularRepresentante": "5"
+    },
+    {
+      "id": 19,
+      "nombre": "p",
+      "fechaNacimiento": "p",
+      "direccionDomiciliaria": "p",
+      "cedula": "p",
+      "nombreRepresentante": "p",
+      "celularRepresentante": "p"
+    },
+    {
+      "id": 20,
+      "nombre": "q",
+      "fechaNacimiento": "q",
+      "direccionDomiciliaria": "q",
+      "cedula": "q",
+      "nombreRepresentante": "q",
+      "celularRepresentante": "q"
+    },
+    {
+      "id": 21,
+      "nombre": "m",
+      "fechaNacimiento": "m",
+      "direccionDomiciliaria": "m",
+      "cedula": "m",
+      "nombreRepresentante": "m",
+      "celularRepresentante": "m"
+    },
+    {
+      "id": 22,
+      "nombre": "z",
+      "fechaNacimiento": "z",
+      "direccionDomiciliaria": "z",
+      "cedula": "z",
+      "nombreRepresentante": "z",
+      "celularRepresentante": "z"
+    },
+    {
+      "id": 23,
+      "nombre": "23",
+      "fechaNacimiento": "23",
+      "direccionDomiciliaria": "23",
+      "cedula": "23",
+      "nombreRepresentante": "23",
+      "celularRepresentante": "23"
+    },
+    {
+      "nombre": "8",
+      "fechaNacimiento": "8",
+      "direccionDomiciliaria": "8",
+      "cedula": "8",
+      "nombreRepresentante": "8",
+      "celularRepresentante": "8",
+      "id": 24
+    },
+    {
+      "nombre": "O",
+      "fechaNacimiento": "O",
+      "direccionDomiciliaria": "O",
+      "cedula": "O",
+      "nombreRepresentante": "O",
+      "celularRepresentante": "O",
+      "id": 25
+    },
+    {
+      "nombre": "p",
+      "fechaNacimiento": "p",
+      "direccionDomiciliaria": "p",
+      "cedula": "p",
+      "nombreRepresentante": "p",
+      "celularRepresentante": "p",
+      "id": 26
+    },
+    {
+      "id": 27,
+      "nombre": "b",
+      "fechaNacimiento": "b",
+      "direccionDomiciliaria": "b",
+      "cedula": "b",
+      "nombreRepresentante": "b",
+      "celularRepresentante": "b"
+    },
+    {
+      "id": 30,
+      "nombre": "r",
+      "fechaNacimiento": "r",
+      "direccionDomiciliaria": "r",
+      "cedula": "r",
+      "nombreRepresentante": "r",
+      "celularRepresentante": "r"
+    },
+    {
+      "id": 31,
+      "nombre": "J",
+      "fechaNacimiento": "J",
+      "direccionDomiciliaria": "J",
+      "cedula": "J",
+      "nombreRepresentante": "J",
+      "celularRepresentante": "J"
+    },
+    {
+      "id": 32,
+      "nombre": "r",
+      "fechaNacimiento": "r",
+      "direccionDomiciliaria": "r",
+      "cedula": "r",
+      "nombreRepresentante": "r",
+      "celularRepresentante": "r"
+    },
+    {
+      "id": 33,
+      "nombre": "1",
+      "fechaNacimiento": "1",
+      "direccionDomiciliaria": "1",
+      "cedula": "1",
+      "nombreRepresentante": "1",
+      "celularRepresentante": "1"
+    },
+    {
+      "id": 34,
+      "nombre": "2",
+      "fechaNacimiento": "2",
+      "direccionDomiciliaria": "2",
+      "cedula": "2",
+      "nombreRepresentante": "2",
+      "celularRepresentante": "2"
+    },
+    {
+      "id": 29,
+      "nombre": "u",
+      "fechaNacimiento": "u",
+      "direccionDomiciliaria": "u",
+      "cedula": "u",
+      "nombreRepresentante": "u",
+      "celularRepresentante": "u"
+    },
+    {
+      "id": 35,
+      "nombre": "9",
+      "fechaNacimiento": "9",
+      "direccionDomiciliaria": "9",
+      "cedula": "9",
+      "nombreRepresentante": "9",
+      "celularRepresentante": "9"
+    },
+    {
+      "id": 36,
+      "nombre": "0",
+      "fechaNacimiento": "0",
+      "direccionDomiciliaria": "0",
+      "cedula": "0",
+      "nombreRepresentante": "0",
+      "celularRepresentante": "0"
+    },
+    {
+      "id": 37,
+      "nombre": "9",
+      "fechaNacimiento": "9",
+      "direccionDomiciliaria": "9",
+      "cedula": "9",
+      "nombreRepresentante": "9",
+      "celularRepresentante": "9"
+    },
+    {
+      "id": 39,
+      "nombre": "p",
+      "fechaNacimiento": "p",
+      "direccionDomiciliaria": "p",
+      "cedula": "p",
+      "nombreRepresentante": "p",
+      "celularRepresentante": "p"
+    },
+    {
+      "id": 40,
+      "nombre": "y",
+      "fechaNacimiento": "y",
+      "direccionDomiciliaria": "y",
+      "cedula": "y",
+      "nombreRepresentante": "y",
+      "celularRepresentante": "y"
     }
   ],
   "asignatura": [

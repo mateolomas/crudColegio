@@ -21,7 +21,7 @@ function Header() {
         </div>
 
         <nav className={styles.navbar}>
-          <Link href='/estudiantes'>
+          <Link href='/Estudiantes'>
             <a>Estudiantes</a>
           </Link>
           <Link href='/cursos'>

@@ -11,15 +11,12 @@ import axios from 'axios'
 import { Data, Estudiante } from '../src/interfaces/schema';
 import TableDataEstudiante from '../src/components/TableDataEstudiante';
 
-const estudiantes = () => {
+const Estudiantes = () => {
 
-  const { data, loading, error }: Data = useFetchData('estudiante')
+  const { data, loading, error }: Data = useFetchData('estudiante');
   const [modal, setModal] = useState(false);
-
   const [estudentData, setData] = useState(data);
-
-
-
+  const [addModal, setAddModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [estudiante, setEstudiante] = useState<Estudiante>({
     id: 0,
@@ -32,49 +29,71 @@ const estudiantes = () => {
 
   });
 
-
-
-  /*
-  useEffect(() => {
-      setData(data);
-    }, [data]);
-  */
-
-  const handleDeleteEst = (id: Number): void => {
-    setDeleteModal(true);
-    const estudiante = data.find(est => est.id === id);
-    if (estudiante)
-      setEstudiante(estudiante);
-
+  const defaultEstudiante = {
+    id: 0,
+    nombre: "",
+    fechaNacimiento: "",
+    direccionDomiciliaria: "",
+    cedula: "",
+    nombreRepresentante: "",
+    celularRepresentante: "",
   }
 
-  const handleConfirmDelete = (id: Number): void => {
+
+
+
+  useEffect(() => {
+    setData(data);
+
+  }, [data]);
+
+  const handleOpenModalDelete = (id: Number): void => {
+    setDeleteModal(true);
+    const estudiante = estudentData.find(est => est.id === id);
+    estudiante ? setEstudiante(estudiante) : setEstudiante(defaultEstudiante);
+  }
+
+  const handleDeleteEstudent = (id: Number): void => {
     axios.delete(`http://localhost:3002/estudiante/${id}`);
     setDeleteModal(false);
-    const estudianteIndex = data.findIndex(est => est.id === id);
-    const newData = [...data];
+    const estudianteIndex = estudentData.findIndex(est => est.id === id);
+    const newData = [...estudentData];
     newData.splice(estudianteIndex, 1);
     setData(newData);
-
   }
 
-  const handleEditEst = (id: Number): void => {
+  const handleCreateEstudent = (estudianteAux: Estudiante): void => {
+    axios.post(`http://localhost:3002/estudiante`, estudianteAux).then(res => {
+      const dataEst = res.data;
+      const newData = [...estudentData];
+      newData.push(dataEst);
+      setData(newData);
+    }).catch(error => {
+      console.log(error, "error");
+      alert(error);
+    })
+  }
+
+
+  const handleOpenModalEditEst = (id: Number): void => {
     setModal(true);
-    const estudiante = data.find(est => est.id === id);
+    const estudiante = estudentData.find(est => est.id === id);
     if (estudiante)
       setEstudiante(estudiante);
-
   }
 
-  const handleConfirmEdit = (id: Number): void => {
-    axios.put(`http://localhost:3002/estudiante/${id}`, estudiante);
-    setModal(false);
-    const estudianteIndex = data.findIndex(est => est.id === id);
-    const newData = [...data];
-    newData.splice(estudianteIndex, 1);
-    setData(newData);
+  const handleEditEstudent = (estudianteAux: Estudiante): void => {
+    axios.put(`http://localhost:3002/estudiante/${estudianteAux.id}`, estudianteAux).then(res => {
+      const dataEst = res.data;
+      const newData = [...estudentData];
+      const estudianteIndex = estudentData.findIndex(est => est.id === dataEst.id);
+      newData[estudianteIndex] = dataEst;
+      setData(newData);
+    }).catch(error => {
+      console.log(error, "error");
+      alert(error);
+    })
   }
-
 
 
 
@@ -89,10 +108,29 @@ const estudiantes = () => {
 
         {/*Agregar data y abre formulario en el modal */}
         <div className={buttonstyle.button}>
-          <button onClick={() => setModal(!modal)}>Agregar</button>
+          <button onClick={() => setAddModal(!modal)}>Agregar</button>
         </div>
+
+        <Modal isOpenModal={addModal} handleModalClose={() => setAddModal(false)}>
+          <FormularioEstudiantes
+            handleCreateEstudent={handleCreateEstudent}
+            handleModalClose={() => setAddModal(false)}
+            estudianteSelected={defaultEstudiante}
+            handleEditEstudent={handleEditEstudent}
+          />
+        </Modal>
+
+
+
+        {/*edit button*/}
         <Modal isOpenModal={modal} handleModalClose={() => setModal(false)} >
-          <FormularioEstudiantes handleModalClose={() => setModal(false)} estudianteSelected={estudiante} />
+          <FormularioEstudiantes
+            handleCreateEstudent={handleCreateEstudent}
+            handleModalClose={() => setModal(false)}
+            estudianteSelected={estudiante}
+            handleEditEstudent={handleEditEstudent}
+          />
+
         </Modal>
         {/*tabla */}
 
@@ -112,9 +150,9 @@ const estudiantes = () => {
 
           <tbody>
             <TableDataEstudiante
-              data={data}
-              handleDeleteEst={handleDeleteEst}
-              handleEditEst={handleEditEst}
+              data={estudentData}
+              handleDeleteEst={handleOpenModalDelete}
+              handleEditEst={handleOpenModalEditEst}
             />
 
           </tbody>
@@ -124,7 +162,7 @@ const estudiantes = () => {
           <div style={{ "color": "black" }}>
             <h1 >¿Esta seguro que desea eliminar este estudiante?</h1>
             <p >Nombre: {estudiante.nombre}</p>
-            <button onClick={() => handleConfirmDelete(estudiante.id)}>Eliminar</button>
+            <button onClick={() => handleDeleteEstudent(estudiante.id)}>Eliminar</button>
             <button onClick={() => setDeleteModal(false)}>Cancelar</button>
           </div>
         </Modal>
@@ -134,4 +172,4 @@ const estudiantes = () => {
 
 }
 
-export default estudiantes
+export default Estudiantes
