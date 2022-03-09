@@ -10,11 +10,8 @@ import axios from 'axios';
 import FormularioCursos from '../src/components/FormularioCursos';
 import Modal from '../src/components/Modal';
 import TableDataCursos from '../src/components/TableDataCursos';
-import { StringSchema } from 'yup';
 import useFetchDataAll from '../src/hooks/useFetchDataAll';
-import useFetchDataAsignatura from '../src/hooks/useFetchDataAsignatura';
-import useFetchDataProfesor from '../src/hooks/useFetchDataProfesor';
-import useFetchDataCurso from '../src/hooks/useFetchDataCurso';
+
 
 
 interface Data {

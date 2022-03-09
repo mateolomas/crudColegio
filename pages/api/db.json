@@ -13,7 +13,7 @@
       "id": 1,
       "nombre": "Sancho",
       "direccionDomicilaria": "Quito",
-      "fechaNacimiento": "12/02/1996",
+      "fechaNacimiento": "2022-03-08",
       "cedula": 1004225729,
       "celular": "0988831832",
       "correo": "juan@colegio.con"
@@ -22,7 +22,7 @@
       "id": 2,
       "nombre": "Juan Perez",
       "direccionDomicilaria": "Quito",
-      "fechaNacimiento": "12/02/1996",
+      "fechaNacimiento": "2022-02-28",
       "cedula": 1004225729,
       "celular": "0988831832",
       "correo": "juan@colegio.com"
@@ -31,7 +31,7 @@
       "id": 3,
       "nombre": "Juanito Iza",
       "direccionDomicilaria": "Puyo",
-      "fechaNacimiento": "01/01/01",
+      "fechaNacimiento": "2022-03-03",
       "cedula": "1005986918",
       "celular": "0987654321",
       "correo": "lol@yachyat.com"
@@ -40,7 +40,7 @@
       "id": 4,
       "nombre": "Eugene Morocho",
       "direccionDomicilaria": "Quito",
-      "fechaNacimiento": "06/01/96",
+      "fechaNacimiento": "2022-03-04",
       "cedula": "1008596325",
       "celular": "0987654213",
       "correo": "correo@yacht.com"
@@ -49,183 +49,66 @@
       "id": 5,
       "nombre": "Pololo",
       "direccionDomicilaria": "Cañar",
-      "fechaNacimiento": "12/10/98",
+      "fechaNacimiento": "2022-03-05",
       "cedula": "1009856981",
-      "celular": "987654123",
+      "celular": "9876541242",
       "correo": "polo@yahcy.con"
     },
     {
-      "id": 6,
-      "nombre": "Hola mundo",
-      "direccionDomicilaria": "av la paz",
-      "fechaNacimiento": "11111",
-      "cedula": "0987456978",
-      "celular": "0987654321",
-      "correo": "mateo@correo.com"
+      "id": 7,
+      "nombre": "Oscar",
+      "direccionDomicilaria": "Guayas",
+      "fechaNacimiento": "2022-03-07",
+      "cedula": "1004295726",
+      "celular": "0987451238",
+      "correo": "osacr@jasd.com"
     }
   ],
   "estudiante": [
     {
-      "nombre": "Mateo Lomas9",
-      "fechaNacimiento": "12/12/2589",
+      "nombre": "Mateo Lomas",
+      "fechaNacimiento": "2022-03-02",
       "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
+      "cedula": "1008965852",
       "nombreRepresentante": "Juan Perez",
       "celularRepresentante": "0987654321",
       "id": 1
     },
     {
-      "nombre": "Mateo Sebastias2",
-      "fechaNacimiento": "12/12/2000",
+      "nombre": "Sebastian",
+      "fechaNacimiento": "2022-03-02",
       "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
+      "cedula": "1008965852",
       "nombreRepresentante": "Juan Perez",
       "celularRepresentante": "0987654321",
       "id": 2
     },
     {
-      "nombre": "Mateo Sebastias3",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
+      "nombre": "Doraemon",
+      "fechaNacimiento": "2022-02-28",
+      "direccionDomiciliaria": "Calle Larga",
+      "cedula": "1008965852",
       "nombreRepresentante": "Juan Perez",
       "celularRepresentante": "0987654321",
       "id": 3
     },
     {
-      "nombre": "Mateo Sebastias4",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
+      "nombre": "Nobita",
+      "fechaNacimiento": "2022-02-28",
+      "direccionDomiciliaria": "AnimeStreet",
+      "cedula": "1008965852",
       "nombreRepresentante": "Juan Perez",
       "celularRepresentante": "0987654321",
       "id": 4
     },
     {
-      "nombre": "Mateo Sebastias",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 5
-    },
-    {
-      "nombre": "Mateo Sebastias",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 6
-    },
-    {
-      "id": 7,
-      "nombre": "iuyutfrtqw",
-      "fechaNacimiento": "hjklkijuhy",
-      "direccionDomiciliaria": "tgyhujiko",
-      "cedula": "kijuhgytf",
-      "nombreRepresentante": "hujikolo",
-      "celularRepresentante": "juhyg"
-    },
-    {
-      "id": 8,
-      "nombre": "trfyguhij",
-      "fechaNacimiento": "klkojiuhytyguhijo",
-      "direccionDomiciliaria": "jiuhgghj",
-      "cedula": "kjhgghj",
-      "nombreRepresentante": "jhgguhuij",
-      "celularRepresentante": "ihgguyh"
-    },
-    {
-      "nombre": "Mateo Sebastias",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 9
-    },
-    {
-      "id": 10,
-      "nombre": "iuyutfrt",
-      "fechaNacimiento": "hjklkijuhy",
-      "direccionDomiciliaria": "tgyhujiko",
-      "cedula": "kijuhgytf",
-      "nombreRepresentante": "hujikolo",
-      "celularRepresentante": "juhyg"
-    },
-    {
-      "id": 11,
-      "nombre": "trfyguhij",
-      "fechaNacimiento": "klkojiuhytyguhijo",
-      "direccionDomiciliaria": "jiuhgghj",
-      "cedula": "kjhgghj",
-      "nombreRepresentante": "jhgguhuij",
-      "celularRepresentante": "ihgguyh"
-    },
-    {
-      "nombre": "Mateo Sebastias",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 12
-    },
-    {
-      "id": 13,
-      "nombre": "iuyutfrt",
-      "fechaNacimiento": "hjklkijuhy",
-      "direccionDomiciliaria": "tgyhujiko",
-      "cedula": "kijuhgytf",
-      "nombreRepresentante": "hujikolo",
-      "celularRepresentante": "juhyg"
-    },
-    {
-      "id": 14,
-      "nombre": "trfyguhij",
-      "fechaNacimiento": "klkojiuhytyguhijo",
-      "direccionDomiciliaria": "jiuhgghj",
-      "cedula": "kjhgghj",
-      "nombreRepresentante": "jhgguhuij",
-      "celularRepresentante": "ihgguyh"
-    },
-    {
-      "id": 15,
-      "nombre": "iuyutfrt",
-      "fechaNacimiento": "hjklkijuhy",
-      "direccionDomiciliaria": "tgyhujiko",
-      "cedula": "kijuhgytf",
-      "nombreRepresentante": "hujikolo",
-      "celularRepresentante": "juhyg"
-    },
-    {
-      "nombre": "Mateo Sebastiasqwd",
-      "fechaNacimiento": "12/12/2589",
-      "direccionDomiciliaria": "Av La paz",
-      "cedula": "10089658523",
-      "nombreRepresentante": "Juan Perez",
-      "celularRepresentante": "0987654321",
-      "id": 18
-    },
-    {
       "id": 16,
       "nombre": "Yougioh",
-      "fechaNacimiento": "Yougioh",
+      "fechaNacimiento": "2022-03-03",
       "direccionDomiciliaria": "Yougioh",
-      "cedula": "Yougioh",
+      "cedula": "1000145878",
       "nombreRepresentante": "Yougioh",
-      "celularRepresentante": "Yougioh"
-    },
-    {
-      "id": 17,
-      "nombre": "78",
-      "fechaNacimiento": "78",
-      "direccionDomiciliaria": "78",
-      "cedula": "78",
-      "nombreRepresentante": "78",
-      "celularRepresentante": "78"
+      "celularRepresentante": "0987654321"
     }
   ],
   "asignatura": [
@@ -253,27 +136,19 @@
   "curso": [
     {
       "id": 1,
-      "idAsignatura": "4",
-      "idProfesor": 2,
-      "capacidadEstudiantes": "100",
-      "fechaInicio": "2022-03-01",
-      "fechaFin": "2022-04-21"
+      "idAsignatura": "1",
+      "idProfesor": "2",
+      "capacidadEstudiantes": "7",
+      "fechaInicio": "2022-03-10",
+      "fechaFin": "2022-03-31"
     },
     {
       "id": 2,
       "idAsignatura": 1,
       "idProfesor": 1,
-      "capacidadEstudiantes": 58,
-      "fechaInicio": "2022-03-03",
-      "fechaFin": "2022-03-06"
-    },
-    {
-      "id": 3,
-      "idAsignatura": 2,
-      "idProfesor": 5,
-      "capacidadEstudiantes": 80,
-      "fechaInicio": "2022-03-03",
-      "fechaFin": "2022-03-06"
+      "capacidadEstudiantes": "10",
+      "fechaInicio": "2022-03-10",
+      "fechaFin": "2022-03-19"
     },
     {
       "id": 4,
@@ -295,33 +170,9 @@
       "id": 6,
       "idAsignatura": 1,
       "idProfesor": 2,
-      "capacidadEstudiantes": "60",
+      "capacidadEstudiantes": "10",
       "fechaInicio": "2022-03-24",
       "fechaFin": "2022-03-26"
-    },
-    {
-      "id": 7,
-      "idAsignatura": 2,
-      "idProfesor": 2,
-      "capacidadEstudiantes": "78",
-      "fechaInicio": "2022-03-10",
-      "fechaFin": "2022-03-25"
-    },
-    {
-      "id": 8,
-      "idAsignatura": 1,
-      "idProfesor": 1,
-      "capacidadEstudiantes": "80",
-      "fechaInicio": "2022-03-16",
-      "fechaFin": "2022-03-12"
-    },
-    {
-      "id": 9,
-      "idAsignatura": 1,
-      "idProfesor": 4,
-      "capacidadEstudiantes": "98",
-      "fechaInicio": "2022-03-25",
-      "fechaFin": "2022-03-18"
     },
     {
       "id": 10,
@@ -348,27 +199,11 @@
       "fechaFin": "2022-03-11"
     },
     {
-      "id": 13,
-      "idAsignatura": 1,
-      "idProfesor": 3,
-      "capacidadEstudiantes": "88",
-      "fechaInicio": "2022-04-07",
-      "fechaFin": "2022-03-10"
-    },
-    {
       "id": 14,
       "idAsignatura": 1,
       "idProfesor": 3,
       "capacidadEstudiantes": "7",
       "fechaInicio": "2022-03-31",
-      "fechaFin": "2022-03-24"
-    },
-    {
-      "id": 15,
-      "idAsignatura": 1,
-      "idProfesor": 1,
-      "capacidadEstudiantes": "05",
-      "fechaInicio": "2022-03-30",
       "fechaFin": "2022-03-24"
     },
     {
@@ -384,40 +219,8 @@
       "idAsignatura": "1",
       "idProfesor": "1",
       "capacidadEstudiantes": "8",
-      "fechaInicio": "2022-03-03",
-      "fechaFin": "2022-03-25"
-    },
-    {
-      "id": 18,
-      "idAsignatura": "4",
-      "idProfesor": "5",
-      "capacidadEstudiantes": "08",
-      "fechaInicio": "2022-03-23",
-      "fechaFin": "2022-03-19"
-    },
-    {
-      "id": 19,
-      "idAsignatura": "1",
-      "idProfesor": "2",
-      "capacidadEstudiantes": "100000000",
-      "fechaInicio": "2022-03-31",
-      "fechaFin": "2022-03-11"
-    },
-    {
-      "id": 20,
-      "idAsignatura": "4",
-      "idProfesor": "3",
-      "capacidadEstudiantes": "90",
-      "fechaInicio": "2022-03-07",
-      "fechaFin": "2022-03-05"
-    },
-    {
-      "id": 21,
-      "idAsignatura": "2",
-      "idProfesor": "5",
-      "capacidadEstudiantes": "11111111",
-      "fechaInicio": "2022-03-30",
-      "fechaFin": "2022-03-23"
+      "fechaInicio": "2022-03-11",
+      "fechaFin": "2022-03-26"
     },
     {
       "id": 22,
@@ -426,6 +229,22 @@
       "capacidadEstudiantes": "8",
       "fechaInicio": "2022-03-10",
       "fechaFin": "2022-03-24"
+    },
+    {
+      "id": 23,
+      "idAsignatura": "2",
+      "idProfesor": "4",
+      "capacidadEstudiantes": "10",
+      "fechaInicio": "2022-03-17",
+      "fechaFin": "2022-04-01"
+    },
+    {
+      "id": 24,
+      "idAsignatura": "1",
+      "idProfesor": "4",
+      "capacidadEstudiantes": "7",
+      "fechaInicio": "2022-03-26",
+      "fechaFin": "2022-03-31"
     }
   ],
   "cursoEstudiantes": [
