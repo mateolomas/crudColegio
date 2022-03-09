@@ -1,24 +1,39 @@
 .button {
-    padding: 10px;
-    gap: 8px;
-    display: flex;
+  display: flex;
 }
 
 .button button:nth-child(1) {
-    background-color: rgb(68,46,255);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-
+  background-color: rgb(68, 46, 255);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .buttonDanger {
-    background-color: red;
-    padding: 10px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+  background-color: red;
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonWarning {
+  background-color: orange;
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonInfo {
+  background-color: blue;
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }

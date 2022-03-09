@@ -1,8 +1,10 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import styles from "../styles/forms.module.css";
-import usePostData from "../hooks/usePostData";
-import { Curso } from "../interfaces/schema";
+
+import { Asignatura, Curso, Profesor } from '../interfaces/schema';
+import useFetchDataProfesor from '../hooks/useFetchDataProfesor';
+import useFetchDataAsignatura from '../hooks/useFetchDataAsignatura';
 
 
 interface FormProps {
@@ -10,10 +12,34 @@ interface FormProps {
     cursoSelected: Curso
     handleCreateCurso: (curso: Curso) => void
     handleEditCurso: (curso: Curso) => void
-
 }
 
-const FormularioCursos = ({ handleModalClose, cursoSelected, handleCreateCurso, handleEditCurso }: FormProps) => {
+interface DataAsignatura {
+    data: Asignatura[]
+    loading: boolean
+    error: string
+}
+
+interface DataProfesor {
+    data: Profesor[]
+    loading: boolean
+    error: string
+}
+
+
+
+
+const FormularioCursos = ({
+    handleModalClose,
+    cursoSelected,
+    handleCreateCurso,
+    handleEditCurso,
+
+
+}: FormProps) => {
+
+    const { data: dataAsignatura, loading: loadingAsignatura, error: errorAsignatura }: DataAsignatura = useFetchDataAsignatura();
+    const { data: dataProfesor, loading: loadingProfesor, error: errorProfesor }: DataProfesor = useFetchDataProfesor();
 
     const defaultCurso = {
         idAsignatura: "",
@@ -23,25 +49,48 @@ const FormularioCursos = ({ handleModalClose, cursoSelected, handleCreateCurso, 
         fechaFin: "",
     }
 
+    const defaultAsignatura =
+    {
+        id: 0,
+        idColegio: 0,
+        nombre: "",
+
+    };
+
+    const defaultProfesor = {
+        id: 0,
+        nombre: "",
+        direccionDomicilaria: "",
+        fechaNacimiento: "",
+        cedula: 0,
+        celular: "",
+        correo: ""
+    }
+
+
+
+
     const initialValues = cursoSelected || defaultCurso;
 
 
     return (
         <>
             <Formik
+
                 onSubmit={(values, { resetForm }) => {
                     resetForm();
                     handleModalClose();
-                    if (cursoSelected.idAsignatura === ""
-                        && cursoSelected.idProfesor === ""
+
+                    if (cursoSelected.idAsignatura === 0
+                        && cursoSelected.idProfesor === 0
                         && cursoSelected.capacidadEstudiantes === 0
                         && cursoSelected.fechaInicio === ""
                         && cursoSelected.fechaFin === "") {
                         handleCreateCurso(values);
+
                     } else {
                         handleEditCurso(values);
                     }
-
 
                 }}
                 //validationSchema={estudianteValidation}
@@ -58,13 +107,23 @@ const FormularioCursos = ({ handleModalClose, cursoSelected, handleCreateCurso, 
                 }) => (
                     <Form>
                         <div className={styles.field}>
-                            <label htmlFor="nombre">ID Asignatura</label>
-                            <Field
-                                type="text"
+                            <label htmlFor="idAsignatura">Asignatura</label>
+                            <Field as="select"
                                 name="idAsignatura"
                                 id="idAsignatura"
-                                placeholder="0001"
-                            />
+
+                            >
+                                <option value="">Seleccione una asignatura</option>
+                                {dataAsignatura.map((asignatura: Asignatura) => {
+                                    return (
+                                        <option key={asignatura.id} value={asignatura.id}>{asignatura.nombre}</option>
+                                    )
+                                })}
+                            </Field>
+
+
+
+
                             <ErrorMessage
                                 name="idAsignatura"
                                 component={() => <div>{errors.idAsignatura}</div>}
@@ -72,13 +131,21 @@ const FormularioCursos = ({ handleModalClose, cursoSelected, handleCreateCurso, 
                         </div>
 
                         <div className={styles.field}>
-                            <label htmlFor="nombre">ID Profesor</label>
-                            <Field
-                                type="text"
+                            <label htmlFor="idProfesor">ID Profesor</label>
+                            <Field as="select"
                                 name="idProfesor"
                                 id="idProfesor"
-                                placeholder="0001"
-                            />
+
+                            >
+                                <option value="">Seleccione un profesor</option>
+                                {
+                                    dataProfesor.map((profesor: Profesor) => {
+                                        return (
+                                            <option key={profesor.id} value={profesor.id}>{profesor.nombre}</option>
+                                        )
+                                    })
+                                }
+                            </Field>
                             <ErrorMessage
                                 name="idProfesor"
                                 component={() => <div>{errors.idProfesor}</div>}

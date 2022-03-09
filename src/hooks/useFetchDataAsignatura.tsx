@@ -1,22 +1,29 @@
 
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Data, Estudiante } from '../interfaces/schema';
+import { Asignatura, Curso } from '../interfaces/schema';
 
 
-const initialState: any = {
-    data: [],
+interface Data {
+    data: Asignatura[];
+    loading: boolean;
+    error: string;
+}
+
+
+const initialState: Data = {
+    data: [] as Asignatura[],
     loading: true,
     error: undefined
 }
 
 
 
-const useFetchData = (tipo: String): any => {
-    const [data, setData] = useState(initialState)
+const useFetchDataCurso = (): Data => {
+    const [data, setData] = useState<Data>(initialState)
     useEffect(() => {
 
-        axios.get(`http://localhost:3002/${tipo}`)
+        axios.get(`http://localhost:3002/asignatura`)
             .then(res => {
                 setData({
                     data: res.data,
@@ -26,7 +33,7 @@ const useFetchData = (tipo: String): any => {
             })
             .catch(err => {
                 setData({
-                    data: [] as Estudiante[],
+                    data: [] as Asignatura[],
                     loading: false,
                     error: err
                 })
@@ -39,4 +46,4 @@ const useFetchData = (tipo: String): any => {
 
 
 
-export default useFetchData
+export default useFetchDataCurso

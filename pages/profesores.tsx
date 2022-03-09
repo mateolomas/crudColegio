@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Layout from '../src/components/Layout'
-import useFetchData from '../src/hooks/useFetchData'
 import styles from '../src/styles/table.module.css'
 import buttonstyle from '../src/styles/button.module.css'
 import Modal from '../src/components/Modal'
@@ -10,6 +9,7 @@ import FormularioProfesores from '../src/components/FormularioProfesores';
 import axios from 'axios'
 import TableDataProfesores from '../src/components/TableDataProfesores';
 import { Profesor } from '../src/interfaces/schema';
+import useFetchDataProfesor from '../src/hooks/useFetchDataProfesor';
 
 interface Data {
   data: Profesor[],
@@ -19,7 +19,7 @@ interface Data {
 
 const Profesores = () => {
 
-  const { data, loading, error }: Data = useFetchData('profesor');
+  const { data, loading, error }: Data = useFetchDataProfesor();
   const [modal, setModal] = useState(false);
   const [profesorData, setData] = useState(data);
   const [addModal, setAddModal] = useState(false);

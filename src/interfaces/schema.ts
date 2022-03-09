@@ -5,6 +5,12 @@ export interface Data {
 }
 
 
+export interface CursosData {
+    curso: Curso,
+    profesor: Profesor,
+    asignatura: Asignatura,
+}
+
 export interface Schema {
     colegio:          Colegio[];
     profesor:         Profesor[];
@@ -30,8 +36,8 @@ export interface Colegio {
 
 export interface Curso {
     id:            number;
-    idAsignatura:         string;
-    idProfesor:           string;
+    idAsignatura:         number;
+    idProfesor:           number;
     capacidadEstudiantes: number;
     fechaInicio:          string;
     fechaFin:             string;

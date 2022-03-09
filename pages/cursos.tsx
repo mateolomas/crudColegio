@@ -1,112 +1,186 @@
 
 import React from 'react'
 import Layout from '../src/components/Layout'
-import useFetchData from '../src/hooks/useFetchData';
+
 import { useState, useEffect } from 'react';
-import { Curso, Asignatura } from '../src/interfaces/schema';
+import { Curso, Asignatura, Profesor, CursosData } from '../src/interfaces/schema';
 import styles from '../src/styles/table.module.css'
 import buttonstyle from '../src/styles/button.module.css'
 import axios from 'axios';
 import FormularioCursos from '../src/components/FormularioCursos';
 import Modal from '../src/components/Modal';
 import TableDataCursos from '../src/components/TableDataCursos';
+import { StringSchema } from 'yup';
+import useFetchDataAll from '../src/hooks/useFetchDataAll';
+import useFetchDataAsignatura from '../src/hooks/useFetchDataAsignatura';
+import useFetchDataProfesor from '../src/hooks/useFetchDataProfesor';
+import useFetchDataCurso from '../src/hooks/useFetchDataCurso';
 
-interface DataCurso {
-  data: Curso[];
-  loading: boolean;
-  error: string;
+
+interface Data {
+  data: CursosData[]
+  loading: boolean
+  error: string
+}
+interface DataTable {
+  curso: Curso
+  asignatura: Asignatura
+  profesor: Profesor
 }
 
-interface DataAsignatura {
-  data: Asignatura[];
-  loading: boolean;
-  error: string;
+const defaultCurso: Curso = {
+  id: 0,
+  idAsignatura: 0,
+  idProfesor: 0,
+  capacidadEstudiantes: 0,
+  fechaInicio: "",
+  fechaFin: "",
+
 }
 
+
+const defaultAsignatura: Asignatura = {
+  id: 0,
+  idColegio: 0,
+  nombre: ""
+}
+
+const defaultProfesor: Profesor = {
+  id: 0,
+  nombre: "",
+  direccionDomicilaria: "",
+  fechaNacimiento: "",
+  cedula: 0,
+  celular: "",
+  correo: ""
+}
+
+
+const defaultCursoData: CursosData = {
+  curso: defaultCurso,
+  asignatura: defaultAsignatura,
+  profesor: defaultProfesor
+}
 
 
 const Cursos = () => {
 
-  const { data: dataCurso, loading: loadingCurso, error: errorCurso }: DataCurso = useFetchData('curso');
-  const { data: dataAsignatura, loading: loadingAsignatura, error: errorAsignatura }: DataAsignatura = useFetchData('asignatura');
+  const { data, loading, error }: Data = useFetchDataAll();
+  const [cursoData, setData] = useState<CursosData[]>(data);
 
-  const [modal, setModal] = useState(false);
-  const [cursoData, setData] = useState(dataCurso);
-  const [addModal, setAddModal] = useState(false);
-  const [deleteModal, setDeleteModal] = useState(false);
-  const [curso, setCurso] = useState<Curso>({
-    id: 0,
-    idAsignatura: "",
-    idProfesor: "",
-    capacidadEstudiantes: 0,
-    fechaInicio: "",
-    fechaFin: "",
+  {/* CURSO SELECTED  */ }
+  const [curso, setCurso] = useState<Curso>(defaultCurso);
+  {/* CURSO SELECTED  */ }
 
-  })
+  {/* MODALES */ }
+  const [modal, setModal] = useState<boolean>(false);
+  const [addModal, setAddModal] = useState<boolean>(false);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  {/* MODALES */ }
 
-  const defaultCurso = {
-
-    id: 0,
-    idAsignatura: "",
-    idProfesor: "",
-    capacidadEstudiantes: 0,
-    fechaInicio: "",
-    fechaFin: "",
-
-  }
   useEffect(() => {
-    setData(dataCurso);
+    setData(data)
+  }, [data]);
 
-  }, [dataCurso]);
 
 
+
+  {/*Modales handling*/ }
   const handleOpenModalDelete = (id: Number): void => {
     setDeleteModal(true);
-    const curso = cursoData.find(cur => cur.id === id);
-    curso ? setCurso(curso) : setCurso(defaultCurso);
+    const curso = cursoData.map((elem) => elem.curso).find((elem: Curso) => elem.id === id);
+    if (curso)
+      setCurso(curso)
   }
+
+  const handleOpenModalEditCurso = (id: Number): void => {
+    setModal(true);
+    const curso = cursoData.map((elem) => elem.curso).find(cur => cur.id === id);
+    if (curso) {
+      setCurso(curso);
+    }
+  }
+  {/*Modales handling end*/ }
 
   const handleDeleteCurso = (id: Number): void => {
     axios.delete(`http://localhost:3002/curso/${id}`);
     setDeleteModal(false);
-    const cursoIndex = cursoData.findIndex(cur => cur.id === id);
-    const newData = [...cursoData];
+    const cursoIndex = cursoData.map(elem => elem.curso).findIndex(cur => cur.id === id);
+    const newData = [...cursoData.map(elem => elem.curso)];
     newData.splice(cursoIndex, 1);
-    setData(newData);
+
+    const newDataAll = newData.map((elem: Curso) => {
+      const asignatura = data.map(elem => elem.asignatura).find(asig => asig.id == elem.idAsignatura);
+      const profesor = data.map(elem => elem.profesor).find(prof => prof.id == elem.idProfesor);
+      return {
+        curso: elem,
+        asignatura: asignatura,
+        profesor: profesor
+      }
+    })
+
+    console.log(newDataAll, "handleDeleteCurso");
+    setData(newDataAll);
+
   }
+
 
 
   const handleCreateCurso = (cursoAux: Curso): void => {
     axios.post(`http://localhost:3002/curso`, cursoAux).then(res => {
       const dataCur = res.data;
-      const newData = [...cursoData];
+      const newData = [...cursoData.map(elem => elem.curso)];
       newData.push(dataCur);
-      setData(newData);
+
+      const newDataAll = newData.map((elem: Curso) => {
+        const asignatura = data.map(elem => elem.asignatura).find(asig => asig.id == elem.idAsignatura);
+        const profesor = data.map(elem => elem.profesor).find(prof => prof.id == elem.idProfesor);
+        return {
+          curso: elem,
+          asignatura: asignatura,
+          profesor: profesor
+        }
+      })
+
+      console.log(newDataAll, "handleCreateCurso");
+      setData(newDataAll);
+
+
+
+
     }).catch(error => {
       console.log(error, "error");
     });
   }
 
-  const handleOpenModalEditCurso = (id: Number): void => {
-    setModal(true);
-    const curso = cursoData.find(cur => cur.id === id);
-    if (curso) {
-      setCurso(curso);
-    }
-  }
+
 
   const handleEditCurso = (cursoAux: Curso): void => {
     axios.put(`http://localhost:3002/curso/${cursoAux.id}`, cursoAux).then(res => {
       const dataCur = res.data;
-      const newData = [...cursoData];
+      const newData = [...cursoData.map(elem => elem.curso)];
       const cursoIndex = newData.findIndex(cur => cur.id === dataCur.id);
       newData[cursoIndex] = dataCur;
-      setData(newData);
+
+      const newDataAll = newData.map((elem: Curso) => {
+        const asignatura = data.map(elem => elem.asignatura).find(asig => asig.id == elem.idAsignatura);
+        const profesor = data.map(elem => elem.profesor).find(prof => prof.id == elem.idProfesor);
+        return {
+          curso: elem,
+          asignatura: asignatura,
+          profesor: profesor
+        }
+      })
+
+      console.log(newDataAll, "handleEditCurso");
+      setData(newDataAll);
+
+
+
     }).catch(error => {
       console.log(error, "error");
     });
   }
-
 
 
 
@@ -114,8 +188,7 @@ const Cursos = () => {
   return (
     <Layout>
       <h2>Cursos</h2>
-      {loadingCurso && <p>Cargando...</p>}
-      {errorCurso && <p>Error</p>}
+
 
       <div className={buttonstyle.button}>
         <button onClick={() => setAddModal(!modal)} >Agregar curso</button>
@@ -123,6 +196,7 @@ const Cursos = () => {
 
       <Modal isOpenModal={addModal} handleModalClose={() => setAddModal(false)}>
         <FormularioCursos
+
           handleCreateCurso={handleCreateCurso}
           handleModalClose={() => setAddModal(false)}
           cursoSelected={defaultCurso}
@@ -130,11 +204,12 @@ const Cursos = () => {
         />
 
       </Modal>
-      {/*edit button*/}
+
 
       <Modal isOpenModal={modal} handleModalClose={() => setModal(false)}>
 
         <FormularioCursos
+
           handleCreateCurso={handleCreateCurso}
           handleModalClose={() => setModal(false)}
           cursoSelected={curso}
@@ -144,13 +219,6 @@ const Cursos = () => {
       </Modal>
 
       {/*edit button*/}
-
-
-
-
-
-
-
 
 
 
@@ -165,14 +233,15 @@ const Cursos = () => {
             <th>Fecha Fin</th>
           </tr>
         </thead>
-        <tbody>
-          <TableDataCursos
+        {<tbody>
+          {/*loading ? <tr><td>Cargando...</td></tr> : error*/}
+          {<TableDataCursos
             data={cursoData}
             handleDeleteCurso={handleOpenModalDelete}
             handleEditCurso={handleOpenModalEditCurso}
           />
-
-        </tbody>
+          }
+        </tbody>}
 
       </table>
 
@@ -191,8 +260,7 @@ const Cursos = () => {
         </div>
       </Modal>
 
-
-
+      {/* 
       <h2>Asignaturas</h2>
 
 
@@ -204,7 +272,7 @@ const Cursos = () => {
             <th>Id Colegio</th>
           </tr>
         </thead>
-        <tbody>
+        {<tbody>
           {dataAsignatura.map((asignatura: Asignatura) => {
             return (
               <tr key={asignatura.id} className={styles.valuestr}>
@@ -214,8 +282,8 @@ const Cursos = () => {
 
               </tr>);
           })}
-        </tbody>
-      </table>
+        </tbody>}
+      </table> */}
 
     </Layout>
 

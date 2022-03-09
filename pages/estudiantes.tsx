@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useEffect } from 'react'
 import FormularioEstudiantes from '../src/components/FormularioEstudiantes';
 import Layout from '../src/components/Layout'
-import useFetchData from '../src/hooks/useFetchData'
+
 import styles from '../src/styles/table.module.css'
 import buttonstyle from '../src/styles/button.module.css'
 import { useState } from 'react'
@@ -10,10 +10,11 @@ import Modal from '../src/components/Modal'
 import axios from 'axios'
 import { Data, Estudiante } from '../src/interfaces/schema';
 import TableDataEstudiante from '../src/components/TableDataEstudiante';
+import useFetchDataEstudiante from '../src/hooks/useFetchDataEstudiante';
 
 const Estudiantes = () => {
 
-  const { data, loading, error }: Data = useFetchData('estudiante');
+  const { data, loading, error }: Data = useFetchDataEstudiante()
   const [modal, setModal] = useState(false);
   const [estudentData, setData] = useState(data);
   const [addModal, setAddModal] = useState(false);
