@@ -76,7 +76,7 @@ const FormularioProfesores = ({ handleModalClose, profesorSelected, handleCreate
                         <div>
                             <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
                             <Field
-                                type="text"
+                                type="date"
                                 name="fechaNacimiento"
                                 id="fechaNacimiento"
                                 placeholder="12/12/1999"

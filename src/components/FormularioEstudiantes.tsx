@@ -56,8 +56,8 @@ const FormularioEstudiantes = ({ handleModalClose, estudianteSelected, handleCre
                         </div>
                         <div className={styles.field}>
                             <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-                            <Field type="text" name="fechaNacimiento" id="fechaNacimiento" placeholder="12/12/1999" />
-                            <ErrorMessage name="fnacimiento" component={() => <div>{errors.fechaNacimiento}</div>} />
+                            <Field type="date" name="fechaNacimiento" id="fechaNacimiento" placeholder="12/12/1999" />
+                            <ErrorMessage name="fechaNacimiento" component={() => <div>{errors.fechaNacimiento}</div>} />
                         </div>
 
                         <div className={styles.field}>

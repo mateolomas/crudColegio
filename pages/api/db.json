@@ -16,7 +16,7 @@
       "fechaNacimiento": "12/02/1996",
       "cedula": 1004225729,
       "celular": "0988831832",
-      "correo": "juan@colegio.com"
+      "correo": "juan@colegio.con"
     },
     {
       "id": 2,
@@ -52,7 +52,16 @@
       "fechaNacimiento": "12/10/98",
       "cedula": "1009856981",
       "celular": "987654123",
-      "correo": "polo@yahcy.com"
+      "correo": "polo@yahcy.con"
+    },
+    {
+      "id": 6,
+      "nombre": "Hola mundo",
+      "direccionDomicilaria": "av la paz",
+      "fechaNacimiento": "11111",
+      "cedula": "0987456978",
+      "celular": "0987654321",
+      "correo": "mateo@correo.com"
     }
   ],
   "estudiante": [
@@ -401,6 +410,22 @@
       "capacidadEstudiantes": "90",
       "fechaInicio": "2022-03-07",
       "fechaFin": "2022-03-05"
+    },
+    {
+      "id": 21,
+      "idAsignatura": "2",
+      "idProfesor": "5",
+      "capacidadEstudiantes": "11111111",
+      "fechaInicio": "2022-03-30",
+      "fechaFin": "2022-03-23"
+    },
+    {
+      "id": 22,
+      "idAsignatura": "1",
+      "idProfesor": "1",
+      "capacidadEstudiantes": "8",
+      "fechaInicio": "2022-03-10",
+      "fechaFin": "2022-03-24"
     }
   ],
   "cursoEstudiantes": [

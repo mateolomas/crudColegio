@@ -5,6 +5,7 @@ import styles from "../styles/forms.module.css";
 import { Asignatura, Curso, Profesor } from "../interfaces/schema";
 import useFetchDataProfesor from "../hooks/useFetchDataProfesor";
 import useFetchDataAsignatura from "../hooks/useFetchDataAsignatura";
+import { cursoValidation } from "../Validations/cursoValidation";
 
 interface FormProps {
     handleModalClose: () => void;
@@ -75,6 +76,7 @@ const FormularioCursos = ({
                 //validationSchema={estudianteValidation}
 
                 initialValues={initialValues}
+                validationSchema={cursoValidation}
             >
                 {({
                     values,
@@ -133,7 +135,7 @@ const FormularioCursos = ({
                                 placeholder="20"
                             />
                             <ErrorMessage
-                                name="cedula"
+                                name="capacidadEstudiantes"
                                 component={() => <div>{errors.capacidadEstudiantes}</div>}
                             />
                         </div>
