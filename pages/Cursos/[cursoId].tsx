@@ -1,20 +1,36 @@
+import Layout from "../../src/components/Layout";
+import {
+    Curso,
+    Estudiante,
+    CursoEstudiante,
+    Profesor,
+    Asignatura,
+} from "../../src/interfaces/schema";
+import button from "../../src/styles/button.module.css";
+import styles from "../../src/styles/table.module.css";
+import axios from "axios";
 
-import { useRouter } from "next/router"
-import Layout from "../../src/components/Layout"
-import { Curso, Estudiante, CursoEstudiante, Profesor } from '../../src/interfaces/schema';
-import button from "../../src/styles/button.module.css"
-import styles from "../../src/styles/table.module.css"
-import axios from "axios"
+interface Props {
+    data: Curso;
+    dataEstudiantesCurso: CursoEstudiante[];
+    estudiantes: Estudiante[];
+    dataProfesor: Profesor;
+    dataAsignatura: Asignatura;
+}
 
-const CursoPage = ({ data: curso, dataEstudiantesCurso, estudiantes, dataProfesor }: any) => {
-
-    //const router = useRouter()
-    //const { cursoId } = router.query
-
-    { console.log(estudiantes) }
+const CursoPage = ({
+    data: curso,
+    dataEstudiantesCurso,
+    estudiantes,
+    dataProfesor,
+    dataAsignatura,
+}: Props) => {
+    {
+        console.log(dataAsignatura);
+    }
     return (
         <>
-            <Layout >
+            <Layout>
                 <div>
                     <h1>Informacion del Curso</h1>
                     Curso: {curso.id}
@@ -23,8 +39,8 @@ const CursoPage = ({ data: curso, dataEstudiantesCurso, estudiantes, dataProfeso
                     <thead>
                         <tr className={styles.encabezado}>
                             <th>ID</th>
-                            <th>Id Asignatura</th>
-                            <th>Id profesor</th>
+                            <th>Asignatura</th>
+                            <th>profesor</th>
                             <th>Capacidad Estudiantes</th>
                             <th>Fecha Inicio</th>
                             <th>Fecha Fin</th>
@@ -33,18 +49,18 @@ const CursoPage = ({ data: curso, dataEstudiantesCurso, estudiantes, dataProfeso
                     <tbody>
                         <tr className={styles.valuestr}>
                             <td>{curso.id}</td>
-                            <td>{curso.idAsignatura}</td>
-                            <td>{curso.idProfesor}</td>
+                            <td>{dataAsignatura.nombre}</td>
+                            <td>{dataProfesor.nombre}</td>
                             <td>{curso.capacidadEstudiantes}</td>
                             <td>{curso.fechaInicio}</td>
                             <td>{curso.fechaFin}</td>
                         </tr>
-
                     </tbody>
-
                 </table>
                 <div>
-                    <button className={button.buttonInfo}>Agregar estudiantes a curso</button>
+                    <button className={button.buttonInfo}>
+                        Agregar estudiantes a curso
+                    </button>
                 </div>
 
                 <div>
@@ -61,12 +77,18 @@ const CursoPage = ({ data: curso, dataEstudiantesCurso, estudiantes, dataProfeso
                                 <th>Correo</th>
                             </tr>
                         </thead>
-
-
+                        <tbody>
+                            <tr className={styles.valuestr}>
+                                <td>{dataProfesor.id}</td>
+                                <td>{dataProfesor.nombre}</td>
+                                <td>{dataProfesor.direccionDomicilaria}</td>
+                                <td>{dataProfesor.fechaNacimiento}</td>
+                                <td>{dataProfesor.cedula}</td>
+                                <td>{dataProfesor.celular}</td>
+                                <td>{dataProfesor.correo}</td>
+                            </tr>
+                        </tbody>
                     </table>
-
-
-
                 </div>
 
                 <div>
@@ -75,7 +97,7 @@ const CursoPage = ({ data: curso, dataEstudiantesCurso, estudiantes, dataProfeso
 
                 <table className={styles.tabla}>
                     <thead>
-                        <tr className={styles.encabezado} >
+                        <tr className={styles.encabezado}>
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Fecha de Nacimiento</th>
@@ -98,63 +120,57 @@ const CursoPage = ({ data: curso, dataEstudiantesCurso, estudiantes, dataProfeso
                             </tr>
                         ))}
                     </tbody>
-
                 </table>
-
-
-
-
-
-
-
-
             </Layout>
         </>
-    )
-}
-
+    );
+};
 
 export async function getServerSideProps(context: any) {
+    const res = await axios.get<Curso>(
+        `http://localhost:3002/curso/${context.query.cursoId}`
+    );
+    const data = res.data;
 
+    const ListEstudent = await axios.get<CursoEstudiante[]>(
+        `http://localhost:3002/cursoEstudiantes?idCurso=${context.query.cursoId}`
+    );
+    const dataEstudiantesCurso: CursoEstudiante[] = ListEstudent.data;
 
-    const res = await fetch(`http://localhost:3002/curso/${context.query.cursoId}`)
-    const data = await res.json()
+    const estudiantesIdList = dataEstudiantesCurso.map(
+        (estudiante: CursoEstudiante) => {
+            return estudiante.idEstudiante;
+        }
+    );
 
-    const ListEstudent = await axios.get<CursoEstudiante[]>(`http://localhost:3002/cursoEstudiantes?idCurso=${context.query.cursoId}`)
-    const dataEstudiantesCurso: CursoEstudiante[] = ListEstudent.data
-
-
-    const estudiantesIdList = dataEstudiantesCurso.map((estudiante: CursoEstudiante) => {
-        return estudiante.idEstudiante
-    })
-
-    const estudiantes: Estudiante[] = []
+    const estudiantes: Estudiante[] = [];
     for (const id of estudiantesIdList) {
-        const res = await fetch(`http://localhost:3002/estudiante/${id}`)
-        const data = await res.json()
-        estudiantes.push(data)
+        const res = await axios.get<Estudiante>(
+            `http://localhost:3002/estudiante/${id}`
+        );
+        const data = res.data;
+        estudiantes.push(data);
     }
 
-    const profesorInfo = await fetch(`http://localhost:3002/profesor/${data.idProfesor}`)
-    const dataProfesor: Profesor = await profesorInfo.json()
+    const profesorInfo = await axios.get<Profesor>(
+        `http://localhost:3002/profesor/${data.idProfesor}`
+    );
+    const dataProfesor: Profesor = profesorInfo.data;
 
-
-
-
-
-
-
-
-
-
-
+    const asignaturaInfo = await axios.get<Asignatura>(
+        `http://localhost:3002/asignatura/${data.idAsignatura}`
+    );
+    const dataAsignatura: Asignatura = asignaturaInfo.data;
 
     return {
         props: {
-            data, dataEstudiantesCurso, estudiantes, dataProfesor
-        }
-    }
-
+            data,
+            dataEstudiantesCurso,
+            estudiantes,
+            dataProfesor,
+            dataAsignatura,
+        },
+    };
 }
 
-export default CursoPage
+export default CursoPage;

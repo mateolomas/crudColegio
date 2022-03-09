@@ -1,8 +1,6 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useState } from "react";
 import { profesorValidation } from "../Validations/profesorValidation";
-import usePostData from '../hooks/usePostData';
 import { Profesor } from '../interfaces/schema';
 interface FormProps {
     handleModalClose: () => void
@@ -15,7 +13,8 @@ interface FormProps {
 
 const FormularioProfesores = ({ handleModalClose, profesorSelected, handleCreateProfesor, handleEditProfesor }: FormProps) => {
 
-    const defaultProfesor = {
+    const defaultProfesor: Profesor = {
+        id: 0,
         nombre: "",
         direccionDomicilaria: "",
         fechaNacimiento: "",

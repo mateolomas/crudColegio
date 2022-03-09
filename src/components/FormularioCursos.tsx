@@ -2,96 +2,75 @@ import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import styles from "../styles/forms.module.css";
 
-import { Asignatura, Curso, Profesor } from '../interfaces/schema';
-import useFetchDataProfesor from '../hooks/useFetchDataProfesor';
-import useFetchDataAsignatura from '../hooks/useFetchDataAsignatura';
-
+import { Asignatura, Curso, Profesor } from "../interfaces/schema";
+import useFetchDataProfesor from "../hooks/useFetchDataProfesor";
+import useFetchDataAsignatura from "../hooks/useFetchDataAsignatura";
 
 interface FormProps {
-    handleModalClose: () => void
-    cursoSelected: Curso
-    handleCreateCurso: (curso: Curso) => void
-    handleEditCurso: (curso: Curso) => void
+    handleModalClose: () => void;
+    cursoSelected: Curso;
+    handleCreateCurso: (curso: Curso) => void;
+    handleEditCurso: (curso: Curso) => void;
 }
 
 interface DataAsignatura {
-    data: Asignatura[]
-    loading: boolean
-    error: string
+    data: Asignatura[];
+    loading: boolean;
+    error: string;
 }
 
 interface DataProfesor {
-    data: Profesor[]
-    loading: boolean
-    error: string
+    data: Profesor[];
+    loading: boolean;
+    error: string;
 }
-
-
-
 
 const FormularioCursos = ({
     handleModalClose,
     cursoSelected,
     handleCreateCurso,
     handleEditCurso,
-
-
 }: FormProps) => {
+    const {
+        data: dataAsignatura,
+        loading: loadingAsignatura,
+        error: errorAsignatura,
+    }: DataAsignatura = useFetchDataAsignatura();
+    const {
+        data: dataProfesor,
+        loading: loadingProfesor,
+        error: errorProfesor,
+    }: DataProfesor = useFetchDataProfesor();
 
-    const { data: dataAsignatura, loading: loadingAsignatura, error: errorAsignatura }: DataAsignatura = useFetchDataAsignatura();
-    const { data: dataProfesor, loading: loadingProfesor, error: errorProfesor }: DataProfesor = useFetchDataProfesor();
-
-    const defaultCurso = {
-        idAsignatura: "",
-        idProfesor: "",
+    const defaultCurso: Curso = {
+        id: 0,
+        idAsignatura: 0,
+        idProfesor: 0,
         capacidadEstudiantes: 0,
         fechaInicio: "",
         fechaFin: "",
-    }
-
-    const defaultAsignatura =
-    {
-        id: 0,
-        idColegio: 0,
-        nombre: "",
-
     };
 
-    const defaultProfesor = {
-        id: 0,
-        nombre: "",
-        direccionDomicilaria: "",
-        fechaNacimiento: "",
-        cedula: 0,
-        celular: "",
-        correo: ""
-    }
-
-
-
-
     const initialValues = cursoSelected || defaultCurso;
-
 
     return (
         <>
             <Formik
-
                 onSubmit={(values, { resetForm }) => {
                     resetForm();
                     handleModalClose();
 
-                    if (cursoSelected.idAsignatura === 0
-                        && cursoSelected.idProfesor === 0
-                        && cursoSelected.capacidadEstudiantes === 0
-                        && cursoSelected.fechaInicio === ""
-                        && cursoSelected.fechaFin === "") {
+                    if (
+                        cursoSelected.idAsignatura === 0 &&
+                        cursoSelected.idProfesor === 0 &&
+                        cursoSelected.capacidadEstudiantes === 0 &&
+                        cursoSelected.fechaInicio === "" &&
+                        cursoSelected.fechaFin === ""
+                    ) {
                         handleCreateCurso(values);
-
                     } else {
                         handleEditCurso(values);
                     }
-
                 }}
                 //validationSchema={estudianteValidation}
 
@@ -108,21 +87,16 @@ const FormularioCursos = ({
                     <Form>
                         <div className={styles.field}>
                             <label htmlFor="idAsignatura">Asignatura</label>
-                            <Field as="select"
-                                name="idAsignatura"
-                                id="idAsignatura"
-
-                            >
+                            <Field as="select" name="idAsignatura" id="idAsignatura">
                                 <option value="">Seleccione una asignatura</option>
                                 {dataAsignatura.map((asignatura: Asignatura) => {
                                     return (
-                                        <option key={asignatura.id} value={asignatura.id}>{asignatura.nombre}</option>
-                                    )
+                                        <option key={asignatura.id} value={asignatura.id}>
+                                            {asignatura.nombre}
+                                        </option>
+                                    );
                                 })}
                             </Field>
-
-
-
 
                             <ErrorMessage
                                 name="idAsignatura"
@@ -132,19 +106,15 @@ const FormularioCursos = ({
 
                         <div className={styles.field}>
                             <label htmlFor="idProfesor">ID Profesor</label>
-                            <Field as="select"
-                                name="idProfesor"
-                                id="idProfesor"
-
-                            >
+                            <Field as="select" name="idProfesor" id="idProfesor">
                                 <option value="">Seleccione un profesor</option>
-                                {
-                                    dataProfesor.map((profesor: Profesor) => {
-                                        return (
-                                            <option key={profesor.id} value={profesor.id}>{profesor.nombre}</option>
-                                        )
-                                    })
-                                }
+                                {dataProfesor.map((profesor: Profesor) => {
+                                    return (
+                                        <option key={profesor.id} value={profesor.id}>
+                                            {profesor.nombre}
+                                        </option>
+                                    );
+                                })}
                             </Field>
                             <ErrorMessage
                                 name="idProfesor"
@@ -152,11 +122,10 @@ const FormularioCursos = ({
                             />
                         </div>
 
-
-
-
                         <div className={styles.field}>
-                            <label htmlFor="capacidadEstudiantes">Capacidad Estudiantes</label>
+                            <label htmlFor="capacidadEstudiantes">
+                                Capacidad Estudiantes
+                            </label>
                             <Field
                                 type="text"
                                 name="capacidadEstudiantes"
@@ -168,8 +137,6 @@ const FormularioCursos = ({
                                 component={() => <div>{errors.capacidadEstudiantes}</div>}
                             />
                         </div>
-
-
 
                         <div className={styles.field}>
                             <label htmlFor="fechaInicio">Fecha Inicio</label>
@@ -200,7 +167,6 @@ const FormularioCursos = ({
                         </div>
 
                         <button type="submit">Enviar</button>
-
                     </Form>
                 )}
             </Formik>

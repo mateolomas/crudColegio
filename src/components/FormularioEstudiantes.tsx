@@ -1,10 +1,7 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
-
 import styles from "../styles/forms.module.css";
 import { estudianteValidation } from "../Validations/estudianteValidation";
-import usePostData from "../hooks/usePostData";
-import axios from "axios";
 import { Estudiante } from '../interfaces/schema';
 
 interface FormProps {
@@ -17,8 +14,8 @@ interface FormProps {
 
 const FormularioEstudiantes = ({ handleModalClose, estudianteSelected, handleCreateEstudent, handleEditEstudent }: FormProps) => {
 
-    const defaultEstudiante = {
-
+    const defaultEstudiante: Estudiante = {
+        id: 0,
         nombre: "",
         fechaNacimiento: "",
         direccionDomiciliaria: "",

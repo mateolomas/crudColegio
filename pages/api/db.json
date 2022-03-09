@@ -246,7 +246,7 @@
       "id": 1,
       "idAsignatura": "4",
       "idProfesor": 2,
-      "capacidadEstudiantes": "98",
+      "capacidadEstudiantes": "100",
       "fechaInicio": "2022-03-01",
       "fechaFin": "2022-04-21"
     },
@@ -397,7 +397,7 @@
     {
       "id": 20,
       "idAsignatura": "4",
-      "idProfesor": "5",
+      "idProfesor": "3",
       "capacidadEstudiantes": "90",
       "fechaInicio": "2022-03-07",
       "fechaFin": "2022-03-05"

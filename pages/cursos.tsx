@@ -254,6 +254,8 @@ const Cursos = () => {
           <p>Asignatura id: {curso.idAsignatura} </p>
           <p>Profesor id: {curso.idProfesor} </p>
 
+
+
           <button onClick={() => handleDeleteCurso(curso.id)}>Eliminar</button>
           <button onClick={() => setDeleteModal(false)}>Cancelar</button>
 

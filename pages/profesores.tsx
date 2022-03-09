@@ -20,10 +20,10 @@ interface Data {
 const Profesores = () => {
 
   const { data, loading, error }: Data = useFetchDataProfesor();
-  const [modal, setModal] = useState(false);
-  const [profesorData, setData] = useState(data);
-  const [addModal, setAddModal] = useState(false);
-  const [deleteModal, setDeleteModal] = useState(false);
+  const [modal, setModal] = useState<boolean>(false);
+  const [profesorData, setData] = useState<Profesor[]>(data);
+  const [addModal, setAddModal] = useState<boolean>(false);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [profesor, setProfesor] = useState<Profesor>({
     id: 0,
     nombre: "",

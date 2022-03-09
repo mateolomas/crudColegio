@@ -9,7 +9,7 @@ interface Data {
     error: string
 }
 
-function useFetchDataAll(): Data {
+function useFetchDataAll(id?: any): Data {
 
     const [data, setData] = useState<CursosData[]>();
 
@@ -20,9 +20,9 @@ function useFetchDataAll(): Data {
 
         try {
             setLoading(true);
-            //const url = id ? `http://localhost:3002/curso?id=${id}` : 'http://localhost:3002/curso';
+            const url = id ? `http://localhost:3002/curso?id=${id}` : 'http://localhost:3002/curso';
 
-            const response = await axios.get<Curso[]>("http://localhost:3002/curso");
+            const response = await axios.get<Curso[]>(url);
             const curso: Curso[] = response.data;
 
             const asignatura = curso.map(
